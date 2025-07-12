@@ -1,0 +1,142 @@
+@import "tailwindcss";
+
+/* tailwind config */
+
+@font-face {
+       font-family: gothic-bold;
+       src: url("./fonts/GOTHICB.TTF");
+}
+
+@font-face {
+       font-family: gothic;
+       src: url("./fonts/GOTHIC.TTF");
+}
+
+@font-face {
+       font-family: morabba-bold;
+       src: url("./fonts/Morabba-Black.ttf");
+}
+
+@font-face {
+       font-family: morabba;
+       src: url("./fonts/Morabba-Regular.ttf");
+}
+
+@theme {
+       --color-primary: oklab(0.82 0.03 0.17);
+       --color-secondary: oklch(0.29 0 0);
+       --color-tertiary: oklch(20.5% 0 0);
+       --font-gothic-bold: "gothic-bold", sans-serif;
+       --font-gothic: "gothic", sans-serif;
+       --font-morabba: "morabba", sans-serif;
+       --font-morabba-bold: "morabba-bold", sans-serif;
+       --font-custom: "morabba-bold" ;
+       --breakpoint-size-boxes : 460px ;
+       --breakpoint-md : 769px
+}
+
+/* tailwind style (apply) */
+
+html {
+       @apply bg-[#111] overflow-x-hidden
+}
+
+.active-sidebar-desktop {
+       @apply bg-primary
+}
+
+.active-sidebar-desktop>.active-sidebar-desktop-child {
+       @apply text-gray-700
+}
+
+*::selection {
+       @apply text-black bg-primary
+}
+
+.mui-icon-arrow-right {
+       @apply text-secondary
+}
+
+.parentButtonClassName-btn {
+       @apply w-fit ml-0 mr-auto hidden md:block
+}
+
+a{
+       @apply text-primary underline
+}
+
+input  , textarea{
+       @apply outline-1 outline-secondary transition-all duration-300 border-none
+}
+input:focus,
+textarea:focus
+{
+       @apply outline-1 outline-primary
+}
+
+/* css style */
+
+* {
+       cursor: none;
+}
+
+.clip-path-triangle {
+       clip-path: polygon(0 0, 47% 0, 100% 100%, 0% 100%);
+}
+
+.page-overlay.shrink {
+       height: 0;
+}
+
+.word-spacing-half {
+       word-spacing: 0.5rem;
+}
+
+.word-spacing-half-half {
+       word-spacing: 0.25rem;
+}
+
+.word-spacing-3half {
+       word-spacing: 0.1rem;
+}
+
+.font-custom {
+       font-family: 'Franklin Gothic Medium';
+       font-weight: bold;
+}
+
+
+/* Customize Scrollbar  */
+
+.scrollable-firefox {
+       scrollbar-width: thin;
+       /* 'auto' | 'thin' | 'none' */
+       scrollbar-color: #888 #f1f1f1;
+       /* thumb color | track color */
+}
+
+.scrollable::-webkit-scrollbar {
+       width: 12px;
+       /* padding-inline: 2px; */
+       /* height: 8px; */
+}
+
+.scrollable::-webkit-scrollbar-track {
+       background: #272727;
+       width: 12px;
+}
+
+.scrollable::-webkit-scrollbar-thumb {
+       background: #585858;
+       border-radius: 10px;
+       border: 3px solid #272727;
+       background-clip: padding-box;
+}
+
+.scrollable::-webkit-scrollbar-track-piece {
+       background: #272727;
+}
+
+.scrollable::-webkit-scrollbar-thumb:hover {
+       background: #707070;
+}
