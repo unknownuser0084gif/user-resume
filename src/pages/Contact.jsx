@@ -1,15 +1,50 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import SlideDownOnLoad from "../components/slideDownOnLoad/SlideDownOnLoad";
 import ArrowForwardRoundedIcon from '@mui/icons-material/ArrowForwardRounded';
+import { toast } from 'react-toastify';
+import GetDataFromDataBase from "./../helpers/GetDataFromDataBase";
 
 
 export default function Contact() {
 
        const [moveUp, setMoveUp] = useState(false);
+       const [name, setName] = useState(null);
+       const [email, setEmail] = useState(null);
+       const [subject, setSubject] = useState(null);
+       const [message, setMessage] = useState(null);
+       const [settings, setSettings] = useState(null);
+       const buttonSend = useRef(null);
+       const notify = e => toast(e, {
+              pauseOnHover: false,
+              className: "border border-primary outline-none",
+              progressClassName: "!bg-primary",
+              autoClose: 2000
+       });
+       const handleForm = async e => {
+              e.preventDefault();
+              buttonSend.current.style.opacity = 0.5;
+              buttonSend.current.style.pointerEvents = "none";
+              buttonSend.current.setAttribute('disabled', 'true');
+              await fetch("https://mbahri.ir/Api-PHP-Resume/set-form-content", {
+                     method: "POST",
+                     body: JSON.stringify({ name, email, subject, message })
+              }).then(e => {
+                     e.json().then(e => {
+                            notify(<h1 className={`${e.status ? "text-green-500" : "text-red-500"}  font-morabba-bold`}>{e.message}</h1>);
+                            buttonSend.current.style.opacity = 1;
+                            buttonSend.current.style.pointerEvents = "auto";
+                            buttonSend.current.removeAttribute('disabled');
+                     })
+              })
+       }
+
+
        useEffect(() => {
               const timer = setTimeout(() => {
                      setMoveUp(true);
               }, 100);
+              GetDataFromDataBase(e => setSettings(e.value), "settings");
+              window.scrollTo(0, 0)
        }, []);
 
        return (
@@ -46,7 +81,7 @@ export default function Contact() {
                                                         </div>
                                                         <div>
                                                                <h2 className="font-morabba mb-1">ایمیل بده</h2>
-                                                               <h4 className="font-morabba">mortezabahri@gmail.com</h4>
+                                                               <h4 className="font-morabba">{settings && settings.email}</h4>
                                                         </div>
                                                  </div>
                                                  {/* telegram */}
@@ -58,7 +93,7 @@ export default function Contact() {
                                                         </div>
                                                         <div>
                                                                <h2 className="font-morabba mb-1">تو تلگرام پیام بده</h2>
-                                                               <h4 className="font-morabba">mbhdev@</h4>
+                                                               <h4 className="font-morabba">{settings && settings.telegram}@</h4>
                                                         </div>
                                                  </div>
                                                  {/* instagram */}
@@ -82,13 +117,13 @@ export default function Contact() {
                                                         </div>
                                                         <div>
                                                                <h2 className="font-morabba mb-1">پیجم رو ببین</h2>
-                                                               <h4 className="font-morabba">mortezabhri@</h4>
+                                                               <h4 className="font-morabba">{settings && settings.instagram}@</h4>
                                                         </div>
                                                  </div>
                                                  {/* other social */}
                                                  <div className="w-full pt-4 flex gap-x-4 justify-start items-center">
                                                         {/* github */}
-                                                        <a href="#" className="bg-secondary size-10 rounded-full p-2 group hover:bg-primary transition-all">
+                                                        <a href={`https://github.com/${settings && settings.github}`} className="bg-secondary size-10 rounded-full p-2 group hover:bg-primary transition-all">
                                                                <svg className="w-full h-full" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" x="0" y="0" xmlSpace="preserve">
                                                                       <g>
                                                                              <path d="M0 .011h48v48H0v-48z" fill="none" />
@@ -97,7 +132,7 @@ export default function Contact() {
                                                                </svg>
                                                         </a>
                                                         {/* linkedin */}
-                                                        <a href="#" className="bg-secondary size-10 rounded-full p-2 group hover:bg-primary transition-all">
+                                                        <a href={`https://www.linkedin.com/in/${settings && settings.linkedin}`} className="bg-secondary size-10 rounded-full p-2 group hover:bg-primary transition-all">
                                                                <svg className="w-full h-full" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                                                       <rect x="0" fill="transparent" width="20" height="20" />
                                                                       <g>
@@ -106,7 +141,7 @@ export default function Contact() {
                                                                </svg>
                                                         </a>
                                                         {/* twitter */}
-                                                        <a href="#" className="bg-secondary size-10 rounded-full p-2 group hover:bg-primary transition-all">
+                                                        <a href={`https://twitter.com/${settings && settings.twitter}`} className="bg-secondary size-10 rounded-full p-2 group hover:bg-primary transition-all">
                                                                <svg className="w-full h-full" viewBox="0 -2 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
                                                                       <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
                                                                              <g transform="translate(-60.000000, -7521.000000)" className="fill-white group-hover:fill-black transition-all">
@@ -118,7 +153,7 @@ export default function Contact() {
                                                                </svg>
                                                         </a>
                                                         {/* whatsapp */}
-                                                        <a href="#" className="bg-secondary size-10 rounded-full group hover:bg-primary transition-all">
+                                                        <a className="bg-secondary size-10 rounded-full group hover:bg-primary transition-all">
                                                                <svg className="w-full h-full fill-white group-hover:fill-black transition-all" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                                                       <path className="stroke-white group-hover:stroke-black transition-all" fillRule="evenodd" clipRule="evenodd" d="M9.52024 7.76662C9.33885 7.35303 9.13737 7.34298 8.96603 7.34298C8.81477 7.33294 8.65288 7.33294 8.48154 7.33294C8.32083 7.33294 8.04845 7.3932 7.81684 7.64549C7.58464 7.89719 6.95007 8.49217 6.95007 9.71167C6.95007 10.9318 7.83693 12.1111 7.95805 12.2724C8.07858 12.4337 9.67149 15.0139 12.192 16.0124C14.2883 16.839 14.712 16.6777 15.1657 16.6269C15.6189 16.5767 16.6275 16.0325 16.839 15.4476C17.0405 14.8733 17.0405 14.3693 16.9802 14.2682C16.9199 14.1678 16.748 14.1069 16.5064 13.9758C16.2541 13.8552 15.0446 13.2502 14.813 13.1693C14.5808 13.0889 14.4195 13.0487 14.2582 13.2904C14.0969 13.5427 13.623 14.0969 13.4724 14.2582C13.3306 14.4195 13.1799 14.4396 12.9377 14.3185C12.686 14.1979 11.8895 13.9356 10.9418 13.0889C10.2056 12.4331 9.71167 11.6171 9.56041 11.3755C9.41979 11.1232 9.54032 10.992 9.67149 10.8709C9.78257 10.7604 9.92378 10.579 10.0449 10.4378C10.1654 10.296 10.2056 10.1855 10.2966 10.0242C10.377 9.86292 10.3368 9.71167 10.2765 9.59114C10.2157 9.48006 9.74239 8.26056 9.52024 7.76662Z" strokeLinejoin="round" />
                                                                </svg>
@@ -128,23 +163,23 @@ export default function Contact() {
                                    </div>
                                    {/* form*/}
                                    <div className="w-full xl:w-8/12 text-start max-xl:order-1" dir="rtl">
-                                          <form className="xl:pl-12 xl:pr-4 font-morabba space-y-8" action="">
+                                          <form className="xl:pl-12 xl:pr-4 font-morabba space-y-8" action="" onSubmit={e => handleForm(e)}>
                                                  {/* name & email */}
                                                  <div className="flex flex-col md:flex-row gap-8">
-                                                        <input type="text" className="w-full bg-secondary rounded-full py-3 px-6" name="" placeholder="نام" />
-                                                        <input type="text" className="w-full bg-secondary rounded-full py-3 px-6" name="" placeholder="ایمیل" />
+                                                        <input type="text" required className="w-full bg-secondary rounded-full py-3 px-6" name="" placeholder="نام" onChange={e => setName(e.target.value)} />
+                                                        <input type="email" required className="w-full bg-secondary rounded-full py-3 px-6" name="" placeholder="ایمیل" onChange={e => setEmail(e.target.value)} />
                                                  </div>
                                                  {/* subject */}
                                                  <div>
-                                                        <input type="text" className="w-full bg-secondary rounded-full py-3 px-6" name="" placeholder="موضوع" />
+                                                        <input type="text" required className="w-full bg-secondary rounded-full py-3 px-6" name="" placeholder="موضوع" onChange={e => setSubject(e.target.value)} />
                                                  </div>
                                                  {/* message */}
                                                  <div>
-                                                        <textarea rows="7" className="w-full h-fit bg-secondary rounded-[2rem] p-4 " name="" placeholder="متن پیام"></textarea>
+                                                        <textarea rows="7" required className="w-full h-fit bg-secondary rounded-[2rem] p-4 " name="" placeholder="متن پیام" onChange={e => setMessage(e.target.value)}></textarea>
                                                  </div>
                                                  {/* button */}
                                                  <div className="w-full">
-                                                        <button className='w-42 h-[58px] border border-primary py-0 group rounded-full flex justify-start items-center relative ml-0 mr-auto'>
+                                                        <button  ref={buttonSend} type="submit" className='w-42 h-[58px] border border-primary py-0 group rounded-full flex justify-start items-center relative ml-0 mr-auto'>
                                                                <div className='size-14 bg-primary rounded-full group-hover:w-full transition-all flex items-center justify-start absolute -z-1'>
                                                                       <ArrowForwardRoundedIcon className='mui-icon-arrow-right ms-4' />
                                                                </div>

@@ -1,19 +1,32 @@
 <!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script>
-       if(window.chrome){
-              document.querySelector("html").classList.add("scrollable")
-       }else{
-              document.querySelector("html").classList.add("scrollable-firefox")
-       }
-    </script>
-    <title>MBahri-Personal-Website</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<html lang="fa">
+
+<head>
+       <meta charset="UTF-8" />
+       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+       <link rel="icon" href="./public/icons/favicon.ico" type="image/x-icon">
+       <link rel="shortcut icon" href="./public/icons/favicon.ico" type="image/x-icon">
+       <link rel="apple-touch-icon" sizes="180x180" href="./public/icons/apple-touch-icon.png">
+       <link rel="icon" type="image/png" sizes="192x192" href="./public/icons/android-chrome-192x192.png">
+       <link rel="icon" type="image/png" sizes="512x512" href="./public/icons/android-chrome-512x512.png">
+       <link rel="icon" type="image/png" sizes="16x16" href="./public/icons/favicon-16x16.png">
+       <link rel="icon" type="image/png" sizes="32x32" href="./public/icons/favicon-32x32.png">
+       <link rel="manifest" href="./public/icons/site.webmanifest">
+       <meta name="description" content="سایت شخصی مرتضی بحری">
+       <meta name="keywords" content="mbahri,mbahri.ir,bahri,morteza,bahri,مرتضی ,بحری">
+       <title>سایت شخصی مرتضی بحری</title>
+       <script>
+              if (window.chrome) {
+                     document.querySelector("html").classList.add("scrollable")
+              } else {
+                     document.querySelector("html").classList.add("scrollable-firefox")
+              }
+       </script>
+</head>
+
+<body>
+       <div id="root"></div>
+       <script type="module" src="/src/main.jsx"></script>
+</body>
+
 </html>

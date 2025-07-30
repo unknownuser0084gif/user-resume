@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
 import SlideDownOnLoad from "../components/slideDownOnLoad/SlideDownOnLoad";
-import FakeDataArtickle from "../helpers/FakeDataArtickle";
 import CircularProgress from '@mui/material/CircularProgress';
 import TransitionsModal from '../components/modal/Modal';
 import PersonIcon from '@mui/icons-material/Person';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import LocalOfferIcon from '@mui/icons-material/LocalOffer';
-import RawHtmlRenderer from "./../helpers/AddHTMLDom"
+import RawHtmlRenderer from "./../helpers/AddHTMLDom";
+import ConvertDate from "../components/ConvertDate/ConvertDate";
+import GetDataFromDataBase from "./../helpers/GetDataFromDataBase";
 
 
 export default function Blog() {
@@ -18,7 +19,8 @@ export default function Blog() {
               const timer = setTimeout(() => {
                      setMoveUp(true);
               }, 100);
-              setArtcles(FakeDataArtickle);
+              GetDataFromDataBase(e => setArtcles(e.value), "blog");
+              window.scrollTo(0, 0);
        }, []);
 
        return (
@@ -37,12 +39,12 @@ export default function Blog() {
                                                  <div className="w-full max-w-[1150px] mx-auto pr-0 md:pr-18 xl:pr-0 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
                                                         {
                                                                articles.map(item => (
-                                                                      <TransitionsModal timeout={200} parentButtonClassName="parentButtonClassName-btn">
+                                                                      <TransitionsModal key={item.id} timeout={200}>
                                                                              {/* button */}
-                                                                             <article key={item.id} className="w-full overflow-hidden rounded-lg group bg-secondary" dir="rtl">
+                                                                             <article className="w-full overflow-hidden rounded-lg group bg-secondary" dir="rtl">
                                                                                     {/* image */}
                                                                                     <div className="w-full h-1/2 border-b-5 border-primary overflow-hidden">
-                                                                                           <img src={item.img} className="w-full h-full object-cover group-hover:scale-120 transition-all duration-300 ease-in-out" alt={item.title} />
+                                                                                           <img src={item.images} className="w-full h-full object-cover group-hover:scale-120 transition-all duration-300 ease-in-out" alt={item.title} />
                                                                                     </div>
                                                                                     {/* content */}
                                                                                     <div className="w-full h-1/2 px-6">
@@ -73,7 +75,7 @@ export default function Blog() {
                                                                                            {/* calendar */}
                                                                                            <div className="flex items-center">
                                                                                                   <CalendarMonthIcon className="text-primary -mt-1 scale-70" />
-                                                                                                  <h6 className="text-xs word-spacing-half-half">{new Date(item.created_at).toDateString()}</h6>
+                                                                                                  <h6 className="text-xs word-spacing-half-half"><ConvertDate date={item.date} /></h6>
                                                                                            </div>
                                                                                            {/* tags */}
                                                                                            <div className="flex items-center">
@@ -87,7 +89,7 @@ export default function Blog() {
                                                                                     </div>
                                                                                     {/* image */}
                                                                                     <div className="w-full mt-6 h-84 overflow-hidden rounded-lg">
-                                                                                           <img src={item.img} className="w-full h-full object-cover" alt="" />
+                                                                                           <img src={item.images} className="w-full h-full object-cover" alt={item.title} />
                                                                                     </div>
                                                                                     <div className="w-full mt-8 text-justify">
                                                                                            <RawHtmlRenderer html={item.body} />

@@ -57,12 +57,16 @@ html {
        @apply text-secondary
 }
 
-.parentButtonClassName-btn {
-       @apply w-fit ml-0 mr-auto hidden md:block
+.li {
+       @apply list-disc 
 }
 
 a{
        @apply text-primary underline
+}
+
+.a-none {
+       @apply !text-white !no-underline
 }
 
 input  , textarea{

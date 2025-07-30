@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
 import SlideDownOnLoad from "../components/slideDownOnLoad/SlideDownOnLoad";
-import FakeData from "./../helpers/FakeData";
 import TransitionsModal from '../components/modal/Modal';
-
+import GetDataFromDataBase from "./../helpers/GetDataFromDataBase";
 
 export default function Portfolio() {
 
@@ -12,20 +11,19 @@ export default function Portfolio() {
 
        const tab = (name) => {
               setTabs(name);
-              console.log(FakeData)
               if (name === "all"){
-                     setData(FakeData);
+                     GetDataFromDataBase(e => setData(e.value) , "portfolio");
               }else{
-                     setData(FakeData.filter(item => item.filter === name));
+                     GetDataFromDataBase(e => setData(e.value.filter(item => item.filter === name)) , "portfolio");
               }
-              
        }
 
        useEffect(() => {
               const timer = setTimeout(() => {
                      setMoveUp(true);
               }, 100);
-              setData(FakeData)
+              GetDataFromDataBase(e => setData(e.value) , "portfolio");
+              window.scrollTo(0, 0)
        }, []);
 
        return (
@@ -50,30 +48,30 @@ export default function Portfolio() {
                                                  data && (
                                                         data.map(item => (
                                                                <div key={item.id} className="w-full h-56 rounded-2xl overflow-hidden relative group select-none">
-                                                                      <img className="w-full h-full object-cover" src={item.media[0]} alt="" />
+                                                                      <img className="w-full h-full object-cover" src={item.image} alt="" />
                                                                       <TransitionsModal timeout={500} >
                                                                              {/* button */}
                                                                              <div className="absolute top-0 left-0 w-full h-full bg-primary opacity-0 group-hover:opacity-100 transition-all duration-500 flex justify-center items-center">
-                                                                                    <h1 className="-mt-12 group-hover:mt-0 transition-all duration-500 font-morabba text-xl">{item.title}</h1>
+                                                                                    <h1 className="-mt-12 group-hover:mt-0 transition-all duration-500 font-morabba text-xl">{item.project_title}</h1>
                                                                              </div>
                                                                              {/* modal content */}
                                                                              <div>
                                                                                     {/* title */}
-                                                                                    <h1 className="uppercase text-center pb-8 w-full font-gothic-bold text-primary text-3xl">{item.title}</h1>
+                                                                                    <h1 className="uppercase text-center pb-8 w-full font-gothic-bold text-primary text-3xl">{item.project_title}</h1>
                                                                                     {/* other info */}
                                                                                     <div className="flex justify-between pb-8 pt-0 w-full" dir="rtl">
                                                                                            <div className="w-full space-y-4 text-lg">
-                                                                                                  <h3>مشتری : &nbsp;&nbsp;<span>{item.client}</span></h3>
-                                                                                                  <h3>پیش نمایش :  &nbsp;&nbsp;<a href={item.preview}>{item.preview}</a></h3>
+                                                                                                  <h3>مشتری : &nbsp;&nbsp;<span>{item.customer}</span></h3>
+                                                                                                  <h3>پیش نمایش :  &nbsp;&nbsp;<a href={item.preview_link}>{item.preview_link}</a></h3>
                                                                                            </div>
                                                                                            <div className="w-full space-y-4 text-lg">
                                                                                                   <h3>پروژه : &nbsp;&nbsp;<span>{item.name}</span></h3>
-                                                                                                  <h3>زبان ها :  &nbsp;&nbsp;<span className="uppercase">{item.language}</span></h3>
+                                                                                                  <h3>زبان ها :  &nbsp;&nbsp;<span className="uppercase">{item.language_programming}</span></h3>
                                                                                            </div>
                                                                                     </div>
                                                                                     {/* media */}
                                                                                     <div className="w-full h-[20rem] overflow-hidden rounded-2xl">
-                                                                                           <img className="w-full h-full object-cover" src={item.media[0]} alt="" />
+                                                                                           <img className="w-full h-full object-cover" src={item.image} alt="" />
                                                                                     </div>
                                                                              </div>
                                                                       </TransitionsModal>

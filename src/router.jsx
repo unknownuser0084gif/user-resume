@@ -3,6 +3,7 @@ import Bio from "./pages/Bio";
 import Portfolio from "./pages/Portfolio";
 import Contact from "./pages/Contact";
 import Blog from "./pages/Blog";
+import NotFound from "./pages/404";
 
 const routes = [
        // home
@@ -11,5 +12,6 @@ const routes = [
        {path : "/portfolio" , element : <Portfolio/>},
        {path : "/contact" , element : <Contact/>},
        {path : "/blog" , element : <Blog/>},
+       {path : "*" , element : <NotFound/>},
 ];
 export default routes ;
