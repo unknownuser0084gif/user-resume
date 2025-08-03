@@ -30,9 +30,9 @@
        --font-gothic: "gothic", sans-serif;
        --font-morabba: "morabba", sans-serif;
        --font-morabba-bold: "morabba-bold", sans-serif;
-       --font-custom: "morabba-bold" ;
-       --breakpoint-size-boxes : 460px ;
-       --breakpoint-md : 769px
+       --font-custom: "morabba-bold";
+       --breakpoint-size-boxes: 460px;
+       --breakpoint-md: 769px
 }
 
 /* tailwind style (apply) */
@@ -58,10 +58,10 @@ html {
 }
 
 .li {
-       @apply list-disc 
+       @apply list-disc
 }
 
-a{
+a {
        @apply text-primary underline
 }
 
@@ -69,12 +69,12 @@ a{
        @apply !text-white !no-underline
 }
 
-input  , textarea{
+input, textarea {
        @apply outline-1 outline-secondary transition-all duration-300 border-none
 }
+
 input:focus,
-textarea:focus
-{
+textarea:focus {
        @apply outline-1 outline-primary
 }
 
@@ -82,6 +82,12 @@ textarea:focus
 
 * {
        cursor: none;
+}
+
+@media only screen and (max-width: 769px) {
+       * {
+              cursor: auto !important;
+       }
 }
 
 .clip-path-triangle {

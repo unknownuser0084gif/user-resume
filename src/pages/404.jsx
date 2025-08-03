@@ -1,8 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import SlideDownOnLoad from "../components/slideDownOnLoad/SlideDownOnLoad";
 import ArrowForwardRoundedIcon from '@mui/icons-material/ArrowForwardRounded';
 import { NavLink } from "react-router-dom"; 
-
 
 export default function NotFound() {
        const [moveUp, setMoveUp] = useState(false);
@@ -12,6 +11,7 @@ export default function NotFound() {
                      setMoveUp(true);
               }, 100);
               window.scrollTo(0, 0);
+              
        }, []);
 
        return (

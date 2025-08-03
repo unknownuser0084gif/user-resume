@@ -4,9 +4,10 @@ import LibraryBooksRoundedIcon from '@mui/icons-material/LibraryBooksRounded';
 import ConnectWithoutContactRoundedIcon from '@mui/icons-material/ConnectWithoutContactRounded';
 import BusinessCenterRoundedIcon from '@mui/icons-material/BusinessCenterRounded';
 import { NavLink } from 'react-router-dom';
+import { memo } from 'react';
 
 
-export default function DesktopSidebar() {
+const DesktopSidebar = memo(() =>{
        return (
               <section className="fixed pr-6 flex justify-end items-center right-0 min-w-24 max-w-24 w-24 h-screen z-10">
                      <div className="space-y-4 w-full" dir='rtl'>
@@ -38,4 +39,5 @@ export default function DesktopSidebar() {
                      </div>
               </section>
        )
-}
+})
+export default DesktopSidebar;

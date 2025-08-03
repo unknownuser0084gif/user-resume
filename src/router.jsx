@@ -8,7 +8,7 @@ import NotFound from "./pages/404";
 const routes = [
        // home
        {path : "/" , element : <Home/>},
-       {path : "/about" , element : <Bio/>},
+       {path : "/about" , element : <Bio/>}, 
        {path : "/portfolio" , element : <Portfolio/>},
        {path : "/contact" , element : <Contact/>},
        {path : "/blog" , element : <Blog/>},

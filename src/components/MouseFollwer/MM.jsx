@@ -1,6 +1,6 @@
-import React, { useEffect, useRef , useState } from 'react';
+import React, { memo, useEffect, useRef, useState } from 'react';
 
-const MouseFollower = () => {
+const MouseFollower = memo(() => {
        const followerRef = useRef(null);
        const followerRefSmail = useRef(null);
        const animationFrame = useRef(null);
@@ -13,7 +13,7 @@ const MouseFollower = () => {
        const mouseYSmail = useRef(0);
        const currentXSmail = useRef(0);
        const currentYSmail = useRef(0);
-       const [isClicked, setIsClicked] = useState(false); 
+       const [isClicked, setIsClicked] = useState(false);
 
 
        useEffect(() => {
@@ -21,6 +21,14 @@ const MouseFollower = () => {
               const hideFollwer = () => {
                      followerRef.current.style.opacity = 0
                      followerRefSmail.current.style.opacity = 0
+              };
+              const removeFollower = () => {
+                     followerRef.current.style.display = "none"
+                     followerRefSmail.current.style.display = "none"
+              };
+              const addFollower = () => {
+                     followerRef.current.style.display = "block"
+                     followerRefSmail.current.style.display = "block"
               };
               const showFollwer = () => {
                      followerRef.current.style.opacity = 1
@@ -78,13 +86,26 @@ const MouseFollower = () => {
               window.addEventListener('mousedown', handleMouseDown);
               window.addEventListener('mouseup', handleMouseUp);
 
-              document.addEventListener("mouseout" , hideFollwer)
-              document.addEventListener("mouseover" , showFollwer)
+              if (window.innerWidth < 769) {
+                     removeFollower()
+              } else {
+                     addFollower()
+              }
+              window.addEventListener('resize', () => {
+                     if (window.innerWidth < 769) {
+                            removeFollower()
+                     } else {
+                            addFollower()
+                     }
+              });
+
+              document.addEventListener("mouseout", hideFollwer)
+              document.addEventListener("mouseover", showFollwer)
 
        }, []);
-       
 
-       
+
+
        const circleSize = isClicked ? 1.2 : 1;
        const circleSizeSmail = isClicked ? 0.7 : 1;
        const circleStyle = {
@@ -93,8 +114,8 @@ const MouseFollower = () => {
               backgroundColor: '#ff8d004d',
               pointerEvents: 'none',
               zIndex: 9999,
-              transition : "transform 150ms ease , opacity 200ms ease",
-              transform : `scale(${circleSize})`
+              transition: "transform 150ms ease , opacity 200ms ease",
+              transform: `scale(${circleSize})`
        };
        const circleStyleSmail = {
               position: 'fixed',
@@ -102,8 +123,8 @@ const MouseFollower = () => {
               backgroundColor: '#ff8d009e',
               pointerEvents: 'none',
               zIndex: 9999,
-              transition : "transform 150ms ease , opacity 200ms ease",
-              transform : `scale(${circleSizeSmail})`
+              transition: "transform 150ms ease , opacity 200ms ease",
+              transform: `scale(${circleSizeSmail})`
        };
 
        return (
@@ -114,6 +135,6 @@ const MouseFollower = () => {
                      <div ref={followerRefSmail} className='top-0 size-2 opacity-0 z-10' style={circleStyleSmail}></div>
               </>
        );
-};
+});
 
 export default MouseFollower;

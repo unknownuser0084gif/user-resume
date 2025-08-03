@@ -2,19 +2,21 @@ import { useState, useEffect, useRef } from "react";
 import SlideDownOnLoad from "../components/slideDownOnLoad/SlideDownOnLoad";
 import ArrowForwardRoundedIcon from '@mui/icons-material/ArrowForwardRounded';
 import { toast } from 'react-toastify';
-import GetDataFromDataBase from "./../helpers/GetDataFromDataBase";
-
+import LoaderData from './../components/LoadingData/LoadingData';
+import useAxiosGet from "../hooks/useAxiosGet";
 
 export default function Contact() {
 
+       const [settings, loading, error] = useAxiosGet("/settings");
        const [moveUp, setMoveUp] = useState(false);
        const [name, setName] = useState(null);
        const [email, setEmail] = useState(null);
        const [subject, setSubject] = useState(null);
        const [message, setMessage] = useState(null);
-       const [settings, setSettings] = useState(null);
        const buttonSend = useRef(null);
-       const notify = e => toast(e, {
+       const buttonSendLoad = useRef(null);
+       const buttonSendData = useRef(null);
+       const notify = e => toast.error(e, {
               pauseOnHover: false,
               className: "border border-primary outline-none",
               progressClassName: "!bg-primary",
@@ -25,26 +27,44 @@ export default function Contact() {
               buttonSend.current.style.opacity = 0.5;
               buttonSend.current.style.pointerEvents = "none";
               buttonSend.current.setAttribute('disabled', 'true');
+              buttonSendData.current.style.display = "none"
+              buttonSendLoad.current.style.display = "block"
+
+              const controller = new AbortController();
+              const timeoutId = setTimeout(() => controller.abort(), 7000);
+
               await fetch("https://mbahri.ir/Api-PHP-Resume/set-form-content", {
                      method: "POST",
-                     body: JSON.stringify({ name, email, subject, message })
+                     body: JSON.stringify({ name, email, subject, message }),
+                     signal: controller.signal
               }).then(e => {
+                     clearTimeout(timeoutId);
                      e.json().then(e => {
                             notify(<h1 className={`${e.status ? "text-green-500" : "text-red-500"}  font-morabba-bold`}>{e.message}</h1>);
                             buttonSend.current.style.opacity = 1;
                             buttonSend.current.style.pointerEvents = "auto";
                             buttonSend.current.removeAttribute('disabled');
+                            buttonSendData.current.style.display = "block"
+                            buttonSendLoad.current.style.display = "none"
                      })
+              }).catch(e => {
+                     clearTimeout(timeoutId);
+                     notify(<h1 className={`text-red-500  font-morabba-bold text-xs`}>مشکلی در ارسال اطلاعات وجود دارد! دوباره امتحان کنید</h1>);
+                     buttonSend.current.style.opacity = 1;
+                     buttonSend.current.style.pointerEvents = "auto";
+                     buttonSend.current.removeAttribute('disabled');
+                     buttonSendData.current.style.display = "block"
+                     buttonSendLoad.current.style.display = "none"
               })
        }
+       error && notify(<h1 className={`text-red-500  font-morabba-bold text-xs`} dir="rtl">مشکلی در ارسال اطلاعات وجود دارد! <br /> (ارور کد : {error.code})</h1>)
 
 
        useEffect(() => {
               const timer = setTimeout(() => {
                      setMoveUp(true);
               }, 100);
-              GetDataFromDataBase(e => setSettings(e.value), "settings");
-              window.scrollTo(0, 0)
+              window.scrollTo(0, 0);
        }, []);
 
        return (
@@ -81,7 +101,18 @@ export default function Contact() {
                                                         </div>
                                                         <div>
                                                                <h2 className="font-morabba mb-1">ایمیل بده</h2>
-                                                               <h4 className="font-morabba">{settings && settings.email}</h4>
+                                                               <h4 className="font-morabba">
+                                                                      {
+                                                                             settings && (
+                                                                                    settings.value.email
+                                                                             )
+                                                                      }
+                                                                      {
+                                                                             loading && (
+                                                                                    <LoaderData className="mt-2" />
+                                                                             )
+                                                                      }
+                                                               </h4>
                                                         </div>
                                                  </div>
                                                  {/* telegram */}
@@ -93,7 +124,18 @@ export default function Contact() {
                                                         </div>
                                                         <div>
                                                                <h2 className="font-morabba mb-1">تو تلگرام پیام بده</h2>
-                                                               <h4 className="font-morabba">{settings && settings.telegram}@</h4>
+                                                               <h4 className="font-morabba">
+                                                                      {
+                                                                             settings && (
+                                                                                    settings.value.telegram + "@"
+                                                                             )
+                                                                      }
+                                                                      {
+                                                                             loading && (
+                                                                                    <LoaderData className="mt-2" />
+                                                                             )
+                                                                      }
+                                                               </h4>
                                                         </div>
                                                  </div>
                                                  {/* instagram */}
@@ -117,7 +159,18 @@ export default function Contact() {
                                                         </div>
                                                         <div>
                                                                <h2 className="font-morabba mb-1">پیجم رو ببین</h2>
-                                                               <h4 className="font-morabba">{settings && settings.instagram}@</h4>
+                                                               <h4 className="font-morabba">
+                                                                      {
+                                                                             settings && (
+                                                                                    settings.value.instagram + "@"
+                                                                             )
+                                                                      }
+                                                                      {
+                                                                             loading && (
+                                                                                    <LoaderData className="mt-2" />
+                                                                             )
+                                                                      }
+                                                               </h4>
                                                         </div>
                                                  </div>
                                                  {/* other social */}
@@ -179,11 +232,16 @@ export default function Contact() {
                                                  </div>
                                                  {/* button */}
                                                  <div className="w-full">
-                                                        <button  ref={buttonSend} type="submit" className='w-42 h-[58px] border border-primary py-0 group rounded-full flex justify-start items-center relative ml-0 mr-auto'>
-                                                               <div className='size-14 bg-primary rounded-full group-hover:w-full transition-all flex items-center justify-start absolute -z-1'>
-                                                                      <ArrowForwardRoundedIcon className='mui-icon-arrow-right ms-4' />
+                                                        <button ref={buttonSend} type="submit" className='w-42 h-[58px] border border-primary py-0 group rounded-full flex justify-start items-center relative ml-0 mr-auto'>
+                                                               <div ref={buttonSendData} className="w-full h-full">
+                                                                      <div className='size-14 bg-primary rounded-full group-hover:w-full transition-all flex items-center justify-start absolute -z-1'>
+                                                                             <ArrowForwardRoundedIcon className='mui-icon-arrow-right ms-4' />
+                                                                      </div>
+                                                                      <h4 className='pr-10 pt-3.5 group-hover:text-secondary transition-all font-morabba-bold'>ارسال پیام</h4>
                                                                </div>
-                                                               <h4 className='pr-18 group-hover:text-secondary transition-all font-morabba-bold'>ارسال پیام</h4>
+                                                               <div ref={buttonSendLoad} className="hidden w-full">
+                                                                      <LoaderData />
+                                                               </div>
                                                         </button>
                                                  </div>
                                           </form>

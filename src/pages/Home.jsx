@@ -24,7 +24,7 @@ export default function Home() {
                             <div className={`fixed top-0 text-white z-1 w-full h-[calc(100vh+3rem)] md:h-full md:pl-12 md:pr-26 md:py-10 flex flex-col md:flex-row items-center md:justify-between md:items-center max-md:-mt-28 max-md:justify-center max-md:items-center transition-all duration-1200 ease-out ${moveUp ? "translate-y-0" : "translate-y-22"}`}>
                                    {/* card image */}
                                    <div className="max-md:min-w-62 max-md:max-w-62 max-md:min-h-62 max-md:max-h-62 md:w-6/10 md:h-full bg-black mt-6 rounded-full md:rounded-4xl shadow-[0px_0px_7px_#000000e6] overflow-hidden border-3 md:border-none border-neutral-800">
-                                          <img src="./images/me.png" className=' w-full h-[150%] md:h-full object-cover' alt="kratos" />
+                                          <img src="./images/me.png" className=' w-full h-[150%] md:h-full object-cover' alt="Morteza Bari" />
                                    </div>
                                    {/* content */}
                                    <div className="w-full md:h-full max-md:mt-12 flex justify-center items-center">

@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState , memo} from 'react';
 
 
-function SlideDownOnLoad() {
+const SlideDownOnLoad = memo(() => {
        const [shrink, setShrink] = useState(false);
 
        useEffect(() => {
@@ -14,6 +14,6 @@ function SlideDownOnLoad() {
        return (
               <div className={`fixed bottom-0 left-0 w-screen h-screen bg-tertiary z-2 transition-all duration-700 ease-[cubic-bezier(0.6,0.03,0,0.91)] page-overlay ${shrink ? 'shrink' : ''}`}></div>
        );
-}
+})
 
 export default SlideDownOnLoad;

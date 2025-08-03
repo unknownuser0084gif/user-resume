@@ -1,25 +1,32 @@
 import { useState, useEffect } from "react";
 import SlideDownOnLoad from "../components/slideDownOnLoad/SlideDownOnLoad";
-import CircularProgress from '@mui/material/CircularProgress';
 import TransitionsModal from '../components/modal/Modal';
 import PersonIcon from '@mui/icons-material/Person';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import LocalOfferIcon from '@mui/icons-material/LocalOffer';
 import RawHtmlRenderer from "./../helpers/AddHTMLDom";
 import ConvertDate from "../components/ConvertDate/ConvertDate";
-import GetDataFromDataBase from "./../helpers/GetDataFromDataBase";
+import LoaderPage from './../components/LoadingPage/LoadingPage'
+import useAxiosGet from "../hooks/useAxiosGet";
+import { toast } from 'react-toastify';
 
 
 export default function Blog() {
 
        const [moveUp, setMoveUp] = useState(false);
-       const [articles, setArtcles] = useState(null);
+       const [articles, loading, error] = useAxiosGet("/blog");
+       const notify = e => toast.error(e, {
+              pauseOnHover: false,
+              className: "border border-primary outline-none",
+              progressClassName: "!bg-primary",
+              autoClose : 2000
+       });
+       error && notify(<h1 className={`text-red-500  font-morabba-bold text-xs`} dir="rtl">مشکلی در ارسال اطلاعات وجود دارد! <br /> (ارور کد : {error.code})</h1>)
 
        useEffect(() => {
               const timer = setTimeout(() => {
                      setMoveUp(true);
               }, 100);
-              GetDataFromDataBase(e => setArtcles(e.value), "blog");
               window.scrollTo(0, 0);
        }, []);
 
@@ -35,10 +42,10 @@ export default function Blog() {
                             {/* contact form */}
                             <div className="w-screen mt-4 px-8">
                                    {
-                                          articles ? (
+                                          articles && (
                                                  <div className="w-full max-w-[1150px] mx-auto pr-0 md:pr-18 xl:pr-0 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
                                                         {
-                                                               articles.map(item => (
+                                                               articles.value.map(item => (
                                                                       <TransitionsModal key={item.id} timeout={200}>
                                                                              {/* button */}
                                                                              <article className="w-full overflow-hidden rounded-lg group bg-secondary" dir="rtl">
@@ -100,13 +107,13 @@ export default function Blog() {
                                                                ))
                                                         }
                                                  </div>
-                                          ) : (
-                                                 <div className="w-full flex justify-center items-center gap-x-4">
-                                                        <h1 className="text-3xl font-gothic-bold uppercase">Loading <CircularProgress size={20} /></h1>
-                                                 </div>
                                           )
                                    }
-
+                                   {
+                                          loading && (
+                                                 <LoaderPage className="mr-32" />
+                                          )
+                                   }
                             </div>
                             <div className="py-8 max-xl:py-16"></div>
                      </section>
