@@ -150,3 +150,13 @@ textarea:focus {
 .scrollable::-webkit-scrollbar-thumb:hover {
        background: #707070;
 }
+
+.nextSlideButton::after{
+       content: "next";
+       font-family: swiper-icons
+}
+
+.prevSlideButton::after{
+       content: "prev";
+       font-family: swiper-icons
+}
