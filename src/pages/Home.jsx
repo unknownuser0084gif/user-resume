@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import SlideDownOnLoad from "../components/slideDownOnLoad/SlideDownOnLoad";
+// import SlideDownOnLoad from "../components/slideDownOnLoad/SlideDownOnLoad";
 
 
 export default function Home() {
@@ -15,7 +15,7 @@ export default function Home() {
 
        return (
               <>
-                     <SlideDownOnLoad />
+                     
                      <section className={`text-white text-center w-screen md:h-screen relative top-0`}>
                             {/* yellow tringle */}
                             <div className='absolute top-0 left-0 w-98 h-screen overflow-hidden md:block hidden z-1'>

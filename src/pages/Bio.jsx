@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import SlideDownOnLoad from "../components/slideDownOnLoad/SlideDownOnLoad";
+// import SlideDownOnLoad from "../components/slideDownOnLoad/SlideDownOnLoad";
 import CircularProgressBar from "../components/CircularProgressBar/CircularProgressBar";
 import BusinessCenterRoundedIcon from '@mui/icons-material/BusinessCenterRounded';
 import DownloadRoundedIcon from '@mui/icons-material/DownloadRounded';
@@ -37,7 +37,7 @@ export default function Bio() {
 
        return (
               <>
-                     <SlideDownOnLoad />
+                     {/* <SlideDownOnLoad /> */}
                      <section className={`text-white text-center w-full md:w-[calc(100vw-7rem)] relative top-0 left-0 transition-all duration-1200 ease-out ${moveUp ? "translate-y-0" : "translate-y-22"}`}>
                             {/* title */}
                             <div className=" w-screen relative h-52 flex justify-center items-center">

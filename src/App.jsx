@@ -5,13 +5,17 @@ import DesktopSidebar from "./components/sidebars/DesktopSidebar";
 import MobileSidebar from "./components/sidebars/MobileSidebar";
 import useIsMobile from "./helpers/isMobile";
 import { ToastContainer } from 'react-toastify';
+import SlideDownOnLoad from "./components/slideDownOnLoad/SlideDownOnLoad";
+import { useState } from "react";
 
 
 function App() {
        let defineRoutes = useRoutes(routes);
+       const [slideDown , setSlideDown] = useState(false);
 
        return (
               <>
+                     
                      <ToastContainer
                             position="top-right"
                             autoClose={2000}
@@ -19,13 +23,14 @@ function App() {
                             newestOnTop={false}
                             closeOnClick={false}
                             rtl={false}
-                            pauseOnFocusLoss = {false}
+                            pauseOnFocusLoss={false}
                             draggable
                             pauseOnHover
                             theme="dark"
                      />
                      <MouseMoveing />
-                     {useIsMobile() ? (<MobileSidebar />) : (<DesktopSidebar />)}
+                     <SlideDownOnLoad open={slideDown}/>
+                     {useIsMobile() ? (<MobileSidebar approveOnTop={setSlideDown} />) : (<DesktopSidebar approveOnTop={setSlideDown} />)}
                      <section className="absolute top-0 w-full">
                             {defineRoutes}
                      </section>

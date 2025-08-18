@@ -69,6 +69,7 @@ export default function Contact() {
 
        return (
               <>
+              {console.log(settings)}
                      <SlideDownOnLoad />
                      <section className={`text-white text-center w-full md:w-[calc(100vw-7rem)] relative top-0 left-0 transition-all duration-1200 ease-out ${moveUp ? "translate-y-0" : "translate-y-22"}`}>
                             {/* title */}
@@ -176,7 +177,7 @@ export default function Contact() {
                                                  {/* other social */}
                                                  <div className="w-full pt-4 flex gap-x-4 justify-start items-center">
                                                         {/* github */}
-                                                        <a href={`https://github.com/${settings && settings.github}`} className="bg-secondary size-10 rounded-full p-2 group hover:bg-primary transition-all">
+                                                        <a href={`https://github.com/${settings && settings.value.github}`} className="bg-secondary size-10 rounded-full p-2 group hover:bg-primary transition-all">
                                                                <svg className="w-full h-full" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" x="0" y="0" xmlSpace="preserve">
                                                                       <g>
                                                                              <path d="M0 .011h48v48H0v-48z" fill="none" />
@@ -185,7 +186,7 @@ export default function Contact() {
                                                                </svg>
                                                         </a>
                                                         {/* linkedin */}
-                                                        <a href={`https://www.linkedin.com/in/${settings && settings.linkedin}`} className="bg-secondary size-10 rounded-full p-2 group hover:bg-primary transition-all">
+                                                        <a href={`https://www.linkedin.com/in/${settings && settings.value.linkedin}`} className="bg-secondary size-10 rounded-full p-2 group hover:bg-primary transition-all">
                                                                <svg className="w-full h-full" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                                                       <rect x="0" fill="transparent" width="20" height="20" />
                                                                       <g>
@@ -194,7 +195,7 @@ export default function Contact() {
                                                                </svg>
                                                         </a>
                                                         {/* twitter */}
-                                                        <a href={`https://twitter.com/${settings && settings.twitter}`} className="bg-secondary size-10 rounded-full p-2 group hover:bg-primary transition-all">
+                                                        <a href={`https://twitter.com/${settings && settings.value.twitter}`} className="bg-secondary size-10 rounded-full p-2 group hover:bg-primary transition-all">
                                                                <svg className="w-full h-full" viewBox="0 -2 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
                                                                       <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
                                                                              <g transform="translate(-60.000000, -7521.000000)" className="fill-white group-hover:fill-black transition-all">
