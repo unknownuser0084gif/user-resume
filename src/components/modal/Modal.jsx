@@ -1,51 +1,94 @@
-import { useState , memo } from 'react';
-import Backdrop from '@mui/material/Backdrop';
-import Modal from '@mui/material/Modal';
-import Fade from '@mui/material/Fade';
+import { useState, memo } from 'react';
 import HighlightOffRoundedIcon from '@mui/icons-material/HighlightOffRounded';
+import { motion, AnimatePresence } from 'framer-motion';
 
 
-const TransitionsModal = memo(({ timeout, parentButtonClassName = "", children }) => {
+const TransitionsModal = memo(({ children }) => {
+
+       //Modal
        const [open, setOpen] = useState(false);
-       const handleOpen = () => setOpen(true);
-       const handleClose = () => setOpen(false);
 
        return (
-              <div>
-                     <div className={parentButtonClassName} onClick={handleOpen}>
+              <>
+                     <div className={`absolute w-full h-full top-0 left-0`} onClick={() => setOpen(prev => !prev)}>
                             {children[0]}
                      </div>
-                     <Modal
-                            aria-labelledby="transition-modal-title"
-                            aria-describedby="transition-modal-description"
-                            open={open}
-                            onClose={handleClose}
-                            closeAfterTransition
-                            slots={{ backdrop: Backdrop }}
-                            slotProps={{
-                                   backdrop: {
-                                          timeout: 200
 
-                                   },
-                            }}
-                            sx={{ transition: "opacity 1000ms , background-color 1000ms !important", backdropFilter: "blur(4px)" }}
-                     // sx={{transitionDuration: "ease-in"}}
-                     >
-                            <Fade in={open} timeout={200}>
-                                   <div className=" absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 !outline-none text-white font-morabba">
-                                          <div className='relative'>
-                                                 <div className='absolute right-0 p-2' onClick={handleClose}>
-                                                        <HighlightOffRoundedIcon />
-                                                 </div>
-                                          </div>
-                                          <div className="w-[calc(95vw)] md:w-[calc(70vw)] xl:w-[calc(50vw)] max-w-[800px] max-h-[80vh] overflow-y-auto scrollable bg-secondary rounded-2xl px-8 py-8">
-                                                 {children[1]}
-                                          </div>
+                     <AnimatePresence>
+                            {
+                                   open && (
+                                          <>
+                                                 <motion.div onClick={() => setOpen(prev => !prev)} className="fixed top-0 left-0 w-screen h-screen bg-black/50 z-98"
+                                                        initial={
+                                                               {
+                                                                      opacity: 0,
+                                                                      backdropFilter: "blur(0)"
+                                                               }
+                                                        }
+                                                        animate={
+                                                               {
+                                                                      opacity: 1,
+                                                                      backdropFilter: "blur(4px)"
+                                                               }
+                                                        }
+                                                        transition={
+                                                               {
+                                                                      duration: 0.4
+                                                               }
+                                                        }
+                                                        exit={
+                                                               {
+                                                                      opacity: 0,
+                                                                      backdropFilter: "blur(0)",
+                                                                      transition: {
+                                                                             delay: 0.15
+                                                                      }
+                                                               }
+                                                        }
+                                                 />
+                                                 <motion.section className="fixed top-1/2 left-1/2 -translate-1/2 w-[95%] md:w-7/8 lg:w-6/8 xl:w-5/8 2xl:w-4/8 border py-4 rounded-lg px-4 bg-tertiary light:bg-light-primary border-black z-98"
+                                                        initial={
+                                                               {
+                                                                      opacity: 0,
+                                                                      transform: "matrix3d(1, 0, 0, 0.0002, 0, 1, 0, -0.0001, 0, 0, 1, 0, -0 , 0, 0, 1)",
+                                                                      perspective: "1500px",
+                                                                      willChange: "opacity , transform",
+                                                                      filter: "blur(12px)"
+                                                               }
+                                                        }
+                                                        exit={
+                                                               {
+                                                                      opacity: [1, 0, 0],
+                                                                      transform: "matrix3d(1, 0, 0, 0.0002, 0, 1, 0, -0.0001, 0, 0, 1, 0, -0 , 0, 0, 1)",
+                                                                      perspective: "1500px",
+                                                                      willChange: "opacity , transform",
+                                                                      filter: "blur(12px)",
+                                                                      transition: {
+                                                                             duration: 0.7
+                                                                      }
+                                                               }
+                                                        }
+                                                        animate={
+                                                               {
+                                                                      opacity: [0, 0, 1],
+                                                                      transform: "matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)",
+                                                                      filter: "blur(0px)",
+                                                                      transition: {
+                                                                             duration: 0.25,
+                                                                             delay: 0.05
+                                                                      }
+                                                               }
+                                                        }
+                                                 >
+                                                        <HighlightOffRoundedIcon className='absolute right-2 top-2 light:text-light-tertiary' onClick={() => setOpen(prev => !prev)}/>
+                                                        {children[1]}
+                                                 </motion.section>
+                                          </>
+                                   )
+                            }
+                     </AnimatePresence>
 
-                                   </div>
-                            </Fade>
-                     </Modal>
-              </div>
+              </>
        );
 })
 export default TransitionsModal

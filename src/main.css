@@ -1,5 +1,5 @@
 @import "tailwindcss";
-
+@custom-variant light (&:where(.light, .light *));
 /* tailwind config */
 
 @font-face {
@@ -26,6 +26,9 @@
        --color-primary: oklab(0.82 0.03 0.17);
        --color-secondary: oklch(0.29 0 0);
        --color-tertiary: oklch(20.5% 0 0);
+       --color-light-primary: oklch(95.2% 0 0);
+       --color-light-secondary: oklch(87% 0 0);
+       --color-light-tertiary: oklch(37.1% 0 0);
        --font-gothic-bold: "gothic-bold", sans-serif;
        --font-gothic: "gothic", sans-serif;
        --font-morabba: "morabba", sans-serif;
@@ -70,7 +73,11 @@ a {
 }
 
 input, textarea {
-       @apply outline-1 outline-secondary transition-all duration-300 border-none
+       @apply outline-1 outline-secondary light:outline-light-primary transition-all duration-200 border-none
+}
+
+textarea::placeholder {
+       @apply text-neutral-400
 }
 
 input:focus,
@@ -151,15 +158,20 @@ textarea:focus {
        background: #707070;
 }
 
-.nextSlideButton::after{
+.nextSlideButton::after {
        content: "next";
        font-family: swiper-icons
 }
 
-.prevSlideButton::after{
+.prevSlideButton::after {
        content: "prev";
        font-family: swiper-icons
 }
+
 /* .bounce-transition {
        transition-timing-function: linear(0 0%, 0 2.27%, 0.02 4.53%, 0.04 6.8%, 0.06 9.07%, 0.1 11.33%, 0.14 13.6%, 0.25 18.15%, 0.39 22.7%, 0.56 27.25%, 0.77 31.8%, 1 36.35%, 0.89 40.9%, 0.85 43.18%, 0.81 45.45%, 0.79 47.72%, 0.77 50%, 0.75 52.27%, 0.75 54.55%, 0.75 56.82%, 0.77 59.1%, 0.79 61.38%, 0.81 63.65%, 0.85 65.93%, 0.89 68.2%, 1 72.7%, 0.97 74.98%, 0.95 77.25%, 0.94 79.53%, 0.94 81.8%, 0.94 84.08%, 0.95 86.35%, 0.97 88.63%, 1 90.9%, 0.99 93.18%, 0.98 95.45%, 0.99 97.73%, 1 100%);
 } */
+
+.addPointerEventsAuto>div {
+       pointer-events: visible;
+}

@@ -11,7 +11,7 @@ const CircularProgressBar = ({ percentage, size = 130, strokeWidth = 8 }) => {
                             cx={size / 2}
                             cy={size / 2}
                             r={radius}
-                            className='stroke-secondary'
+                            className='stroke-secondary light:stroke-light-secondary'
                             strokeWidth={strokeWidth}
                             fill="none"
                      />
@@ -33,8 +33,9 @@ const CircularProgressBar = ({ percentage, size = 130, strokeWidth = 8 }) => {
                             textAnchor="middle"
                             dominantBaseline="middle"
                             fontSize="24"
-                            fill="#ffffff"
+                            // fill="#ffffff"
                             fontWeight="bold"
+                            className='fill-white light:fill-light-tertiary'
                      >
                             {percentage}%
                      </text>
