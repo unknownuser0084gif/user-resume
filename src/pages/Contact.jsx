@@ -251,7 +251,7 @@ export default function Contact() {
                                           </form>
                                    </div>
                             </div>
-                            <div className="my-8"></div>
+                            <div className="max-md:my-20"></div>
                             <div className="absolute top-0 left-0 -z-1 light:bg-light-primary h-screen w-screen transition-all"></div>
                      </motion.section>
               </>

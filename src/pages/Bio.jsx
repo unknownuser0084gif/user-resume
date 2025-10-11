@@ -136,10 +136,10 @@ export default function Bio() {
                                                         </div>
                                                         <div className="w-full pt-12">
                                                                <a href={personalInfo.value.resume_link} className='w-52 h-[58px] border border-primary py-0 group rounded-full flex justify-start items-center relative ml-auto mr-0 !no-underline !text-white'>
-                                                                      <div className='size-14 bg-primary rounded-full group-hover:w-full transition-all flex items-center justify-start absolute -z-1'>
+                                                                      <div className='size-14 bg-primary rounded-full group-hover:w-full transition-all flex items-center justify-start absolute z-1'>
                                                                              <DownloadRoundedIcon className='mui-icon-arrow-right ms-4' />
                                                                       </div>
-                                                                      <h4 className='pr-18 group-hover:text-secondary transition-all font-morabba-bold  light:text-neutral-400'>دانلود فایل رزومه</h4>
+                                                                      <h4 className='pr-18 group-hover:text-secondary transition-all font-morabba-bold  light:text-neutral-400 z-1'>دانلود فایل رزومه</h4>
                                                                </a>
                                                         </div>
                                                  </div>
