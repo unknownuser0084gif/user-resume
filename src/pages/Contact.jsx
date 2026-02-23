@@ -4,10 +4,11 @@ import { toast } from 'react-toastify';
 import LoaderData from './../components/LoadingData/LoadingData';
 import useAxiosGet from "../hooks/useAxiosGet";
 import { motion } from "framer-motion";
+import { settings } from "../db/db"
 
 export default function Contact() {
 
-       const [settings, loading, error] = useAxiosGet("/settings");
+       // const [settings, loading, error] = useAxiosGet("/settings");
        const [name, setName] = useState(null);
        const [email, setEmail] = useState(null);
        const [subject, setSubject] = useState(null);
@@ -29,34 +30,41 @@ export default function Contact() {
               buttonSendData.current.style.display = "none"
               buttonSendLoad.current.style.display = "block"
 
-              const controller = new AbortController();
-              const timeoutId = setTimeout(() => controller.abort(), 7000);
-
-              await fetch("https://mbahri.ir/Api-PHP-Resume/set-form-content", {
-                     method: "POST",
-                     body: JSON.stringify({ name, email, subject, message }),
-                     signal: controller.signal
-              }).then(e => {
-                     clearTimeout(timeoutId);
-                     e.json().then(e => {
-                            notify(<h1 className={`${e.status ? "text-green-500" : "text-red-500"}  font-morabba-bold`}>{e.message}</h1>);
-                            buttonSend.current.style.opacity = 1;
-                            buttonSend.current.style.pointerEvents = "auto";
-                            buttonSend.current.removeAttribute('disabled');
-                            buttonSendData.current.style.display = "block"
-                            buttonSendLoad.current.style.display = "none"
-                     })
-              }).catch(e => {
-                     clearTimeout(timeoutId);
-                     notify(<h1 className={`text-red-500  font-morabba-bold text-xs`}>مشکلی در دریافت اطلاعات وجود دارد! دوباره امتحان کنید</h1>);
+              setTimeout(() => {
+                     notify(<h1 className={`text-red-500  font-morabba-bold text-xs`} dir="rtl">این سرویس فعلا در دسترس نیست! لطفا روش دیگه ای رو انتخاب کنید</h1>);
                      buttonSend.current.style.opacity = 1;
                      buttonSend.current.style.pointerEvents = "auto";
                      buttonSend.current.removeAttribute('disabled');
                      buttonSendData.current.style.display = "block"
                      buttonSendLoad.current.style.display = "none"
-              })
+              }, 2000)
+
+              // const controller = new AbortController();
+              // const timeoutId = setTimeout(() => controller.abort(), 7000);
+              // await fetch("https://mbahri.ir/Api-PHP-Resume/set-form-content", {
+              //        method: "POST",
+              //        body: JSON.stringify({ name, email, subject, message }),
+              //        signal: controller.signal
+              // }).then(e => {
+              //        clearTimeout(timeoutId);
+              //        e.json().then(e => {
+              //               notify(<h1 className={`${e.status ? "text-green-500" : "text-red-500"}  font-morabba-bold`}>{e.message}</h1>);
+              //               buttonSend.current.style.opacity = 1;
+              //               buttonSend.current.style.pointerEvents = "auto";
+              //               buttonSend.current.removeAttribute('disabled');
+              //               buttonSendData.current.style.display = "block"
+              //               buttonSendLoad.current.style.display = "none"
+              //        })
+              // }).catch(e => {
+              //        clearTimeout(timeoutId);
+              //        notify(<h1 className={`text-red-500  font-morabba-bold text-xs`}>مشکلی در دریافت اطلاعات وجود دارد! دوباره امتحان کنید</h1>);
+              //        buttonSend.current.style.opacity = 1;
+              //        buttonSend.current.style.pointerEvents = "auto";
+              //        buttonSend.current.removeAttribute('disabled');
+              //        buttonSendData.current.style.display = "block"
+              //        buttonSendLoad.current.style.display = "none"
+              // })
        }
-       error && notify(<h1 className={`text-red-500  font-morabba-bold text-xs`} dir="rtl">مشکلی در دریافت اطلاعات وجود دارد! <br /> (ارور کد : {error.code})</h1>)
 
 
        useEffect(() => {
@@ -80,12 +88,15 @@ export default function Contact() {
                                           }
                                    }
                             }
-                            className={`text-white text-center w-full md:w-[calc(100vw-7rem)] relative top-0 left-0 transition-all duration-1200 ease-out `}>
+                            className={`text-white text-center w-full md:w-[calc(100vw-7rem)] relative top-0 left-0 transition-all duration-1200 ease-out `}
+                     >
+
                             {/* title */}
                             <div className=" w-screen relative h-52 flex justify-center items-center">
                                    <h1 className="absolute uppercase font-morabba-bold text-7xl md:text-[7rem] opacity-5 text-nowrap light:text-light-tertiary">Contact</h1>
                                    <h1 className="absolute uppercase font-morabba-bold text-5xl md:text-6xl -mt-6 word-spacing-half light:text-light-tertiary">تماس با <span className="text-primary">من</span></h1>
                             </div>
+
                             {/* contact form */}
                             <div className="w-full flex flex-col xl:flex-row justify-center items-center max-xl:gap-y-16 max-xl:px-6" dir="rtl">
                                    {/* description and more */}
@@ -112,16 +123,7 @@ export default function Contact() {
                                                         <div>
                                                                <h2 className="font-morabba mb-1">ایمیل بده</h2>
                                                                <h4 className="font-morabba">
-                                                                      {
-                                                                             settings && (
-                                                                                    settings.value.email
-                                                                             )
-                                                                      }
-                                                                      {
-                                                                             loading && (
-                                                                                    <LoaderData className="mt-2" />
-                                                                             )
-                                                                      }
+                                                                      {settings.email}
                                                                </h4>
                                                         </div>
                                                  </div>
@@ -135,16 +137,7 @@ export default function Contact() {
                                                         <div>
                                                                <h2 className="font-morabba mb-1">تو تلگرام پیام بده</h2>
                                                                <h4 className="font-morabba">
-                                                                      {
-                                                                             settings && (
-                                                                                    settings.value.telegram + "@"
-                                                                             )
-                                                                      }
-                                                                      {
-                                                                             loading && (
-                                                                                    <LoaderData className="mt-2" />
-                                                                             )
-                                                                      }
+                                                                      {settings.telegram + "@"}
                                                                </h4>
                                                         </div>
                                                  </div>
@@ -170,23 +163,14 @@ export default function Contact() {
                                                         <div>
                                                                <h2 className="font-morabba mb-1">پیجم رو ببین</h2>
                                                                <h4 className="font-morabba">
-                                                                      {
-                                                                             settings && (
-                                                                                    settings.value.instagram + "@"
-                                                                             )
-                                                                      }
-                                                                      {
-                                                                             loading && (
-                                                                                    <LoaderData className="mt-2" />
-                                                                             )
-                                                                      }
+                                                                      {settings.instagram}
                                                                </h4>
                                                         </div>
                                                  </div>
                                                  {/* other social */}
                                                  <div className="w-full pt-4 flex gap-x-4 justify-start items-center">
                                                         {/* github */}
-                                                        <a href={`https://github.com/${settings && settings.value.github}`} className="bg-secondary light:shadow-[2px_2px_8px_0px_#7a7a7a] light:bg-light-secondary size-10 rounded-full p-2 group hover:bg-primary transition-all">
+                                                        <a href={`https://github.com/${settings.github}`} className="bg-secondary light:shadow-[2px_2px_8px_0px_#7a7a7a] light:bg-light-secondary size-10 rounded-full p-2 group hover:bg-primary transition-all">
                                                                <svg className="w-full h-full" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" x="0" y="0" xmlSpace="preserve">
                                                                       <g>
                                                                              <path d="M0 .011h48v48H0v-48z" fill="none" />
@@ -195,7 +179,7 @@ export default function Contact() {
                                                                </svg>
                                                         </a>
                                                         {/* linkedin */}
-                                                        <a href={`https://www.linkedin.com/in/${settings && settings.value.linkedin}`} className="bg-secondary light:shadow-[2px_2px_8px_0px_#7a7a7a] light:bg-light-secondary size-10 rounded-full p-2 group hover:bg-primary transition-all">
+                                                        <a href={`https://www.linkedin.com/in/${settings.linkedin}`} className="bg-secondary light:shadow-[2px_2px_8px_0px_#7a7a7a] light:bg-light-secondary size-10 rounded-full p-2 group hover:bg-primary transition-all">
                                                                <svg className="w-full h-full" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                                                       <rect x="0" fill="transparent" width="20" height="20" />
                                                                       <g>
@@ -204,7 +188,7 @@ export default function Contact() {
                                                                </svg>
                                                         </a>
                                                         {/* twitter */}
-                                                        <a href={`https://twitter.com/${settings && settings.value.twitter}`} className="bg-secondary light:shadow-[2px_2px_8px_0px_#7a7a7a] light:bg-light-secondary size-10 rounded-full p-2 group hover:bg-primary transition-all">
+                                                        <a href={`https://twitter.com/${settings.twitter}`} className="bg-secondary light:shadow-[2px_2px_8px_0px_#7a7a7a] light:bg-light-secondary size-10 rounded-full p-2 group hover:bg-primary transition-all">
                                                                <svg className="w-full h-full" viewBox="0 -2 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
                                                                       <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
                                                                              <g transform="translate(-60.000000, -7521.000000)" className="fill-white light:fill-light-tertiary group-hover:fill-black transition-all">
