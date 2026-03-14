@@ -103,12 +103,12 @@ export default function Contact() {
                                    <div className="w-full xl:w-4/12 text-start light:text-light-tertiary">
                                           {/* title */}
                                           <div className="py-2">
-                                                 <h1 className="text-xl font-morabba-bold">خجالت نکش!</h1>
+                                                 <h1 className="text-xl font-morabba-bold">با من در تماس باشید</h1>
                                           </div>
                                           {/* desc */}
                                           <div className="py-2">
                                                  <p className="font-morabba word-spacing-3half">
-                                                        با من در تماس باشید. من همیشه آماده‌ی بحث در مورد پروژه‌های جدید، ایده‌های خلاقانه یا فرصت‌هایی برای مشارکت در چشم‌اندازهای شما هستم.
+                                                        من همیشه آماده‌ی بحث در مورد پروژه‌های جدید، ایده‌های خلاقانه یا فرصت‌هایی برای مشارکت در چشم‌اندازهای شما هستم.
                                                  </p>
                                           </div>
                                           {/* social */}
@@ -122,7 +122,7 @@ export default function Contact() {
                                                         </div>
                                                         <div>
                                                                <h2 className="font-morabba mb-1">ایمیل بده</h2>
-                                                               <h4 className="font-morabba">
+                                                               <h4 className="font-gothic">
                                                                       {settings.email}
                                                                </h4>
                                                         </div>
@@ -136,7 +136,7 @@ export default function Contact() {
                                                         </div>
                                                         <div>
                                                                <h2 className="font-morabba mb-1">تو تلگرام پیام بده</h2>
-                                                               <h4 className="font-morabba">
+                                                               <h4 className="font-gothic">
                                                                       {settings.telegram + "@"}
                                                                </h4>
                                                         </div>
@@ -162,7 +162,7 @@ export default function Contact() {
                                                         </div>
                                                         <div>
                                                                <h2 className="font-morabba mb-1">پیجم رو ببین</h2>
-                                                               <h4 className="font-morabba">
+                                                               <h4 className="font-gothic">
                                                                       {settings.instagram}
                                                                </h4>
                                                         </div>

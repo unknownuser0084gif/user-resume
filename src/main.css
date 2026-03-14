@@ -5,21 +5,37 @@
 @font-face {
        font-family: gothic-bold;
        src: url("./fonts/GOTHICB.TTF");
+       font-display: swap;
 }
 
 @font-face {
        font-family: gothic;
        src: url("./fonts/GOTHIC.TTF");
+       font-display: swap;
 }
 
 @font-face {
        font-family: morabba-bold;
        src: url("./fonts/Morabba-Black.ttf");
+       font-display: swap;
 }
 
 @font-face {
        font-family: morabba;
        src: url("./fonts/Morabba-Regular.ttf");
+       font-display: swap;
+}
+
+@font-face {
+       font-family: sultanAdanBold;
+       src: url("./fonts/Sultan-Adan-Bold.ttf");
+       font-display: swap;
+}
+
+@font-face {
+       font-family: sultanAdan;
+       src: url("./fonts/Sultan-Adan-Light.ttf");
+       font-display: swap;
 }
 
 @theme {
@@ -33,7 +49,9 @@
        --font-gothic: "gothic", sans-serif;
        --font-morabba: "morabba", sans-serif;
        --font-morabba-bold: "morabba-bold", sans-serif;
-       --font-custom: "morabba-bold";
+       --font-custom: "morabba-bold", sans-serif;
+       --font-sultanAdanBold: "sultanAdanBold", sans-serif;
+       --font-sultanAdan: "sultanAdan", sans-serif;
        --breakpoint-size-boxes: 460px;
        --breakpoint-md: 769px
 }

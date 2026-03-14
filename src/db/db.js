@@ -43,6 +43,26 @@ const skilsData = [
               title: "JQuery",
               progress: 90
        },
+       {
+              id: 9,
+              title: "React Query",
+              progress: 80
+       },
+       {
+              id: 10,
+              title: "MUI",
+              progress: 90
+       },
+       {
+              id: 11,
+              title: "PHP",
+              progress: 60
+       },
+       {
+              id: 12,
+              title: "MySQL",
+              progress: 60
+       },
 ]
 const experienceData = [
        {
@@ -57,7 +77,7 @@ const experienceData = [
               years: "1402",
               stack: "توسعه دهنده فول استک",
               company: "فروشگاه اینترنتی خرید کتاب بوکینو",
-              description: "برگزیده استانی پنجمین دوره مسابقات علمی پژوهشی در پژوهش سرا های کشور"
+              description: "برگزیده استانی پنجمین دوره مسابقات علمی پژوهشی پژوهش سرا های کشور"
        },
        {
               id: 3,
@@ -74,6 +94,13 @@ const educationData = [
               degree: "مدرک کاردانی",
               university: "دانشکده شهید منتظری مشهد",
               description: "درحال تحصیل در دانشکده فنی و حرفه ای شهید محمد منتظری مشهد رشته کامپیوتر گرایش نرم افزار"
+       },
+       {
+              id: 2,
+              year: "1400 - 1403",
+              degree: "مدرک دیپلم",
+              university: "هنرستان شهید سید احمد محدث",
+              description: " تحصیل در هنرستان فنی و حرفه ای شهید سید احمد محدث در مشهد رشته کامپیوتر"
        }
 ]
 const portfolios = [

@@ -4,6 +4,7 @@ import BusinessCenterRoundedIcon from '@mui/icons-material/BusinessCenterRounded
 import DownloadRoundedIcon from '@mui/icons-material/DownloadRounded';
 import { motion } from "framer-motion";
 import { bioData, skilsData, experienceData, educationData } from "../db/db"
+import ctp from "../utils/ConvertToPersian";
 
 export default function Bio() {
 
@@ -43,7 +44,7 @@ export default function Bio() {
                                    <div className="w-full xl:w-5/12 grid gap-4 xl:gap-8 grid-cols-2 max-xl:order-1 light:text-light-tertiary">
                                           {/* projects completed */}
                                           <div className="border border-neutral-800 light:border-light-secondary rounded-lg py-6 text-start px-4 md:px-8 space-y-4 w-full">
-                                                 <h1 className="font-gothic-bold text-6xl text-primary">3</h1>
+                                                 <h1 className="text-6xl text-primary font-sultanAdanBold">3</h1>
                                                  <div className="font-morabba flex gap-x-3 text-xl">
                                                         <h1 className="text-gray-600">____</h1>
                                                         <h3>پروژه <br /> تکمیل شده</h3>
@@ -51,7 +52,7 @@ export default function Bio() {
                                           </div>
                                           {/* years of experience */}
                                           <div className="border border-neutral-800 light:border-light-secondary rounded-lg py-6 text-start px-4 md:px-8 space-y-4 w-full">
-                                                 <h1 className="font-gothic-bold text-6xl text-primary">1.5</h1>
+                                                 <h1 className="text-6xl text-primary font-sultanAdanBold">1.5</h1>
                                                  <div className="font-morabba flex gap-x-3 text-xl">
                                                         <h1 className="text-gray-600">____</h1>
                                                         <h3>سال <br /> تجربه</h3>
@@ -59,7 +60,7 @@ export default function Bio() {
                                           </div>
                                           {/* Happy customers */}
                                           <div className="border border-neutral-800 light:border-light-secondary rounded-lg py-6 text-start px-4 md:px-8 space-y-4 w-full">
-                                                 <h1 className="font-gothic-bold text-6xl text-primary">4</h1>
+                                                 <h1 className="text-6xl text-primary font-sultanAdanBold">4</h1>
                                                  <div className="font-morabba flex gap-x-3 text-xl">
                                                         <h1 className="text-gray-600">____</h1>
                                                         <h3>مشتری <br /> خوشحال</h3>
@@ -67,7 +68,7 @@ export default function Bio() {
                                           </div>
                                           {/* awards won */}
                                           <div className="border border-neutral-800 light:border-light-secondary rounded-lg py-6 text-start px-4 md:px-8 space-y-4 w-full">
-                                                 <h1 className="font-gothic-bold text-6xl text-primary">1</h1>
+                                                 <h1 className="text-6xl text-primary font-sultanAdanBold">1 </h1>
                                                  <div className="font-morabba flex gap-x-3 text-xl">
                                                         <h1 className="text-gray-600">____</h1>
                                                         <h3>جوایز <br /> دریافت شده</h3>
@@ -86,7 +87,7 @@ export default function Bio() {
                                                         </div>
                                                         <div className="w-full flex flex-col md:flex-row md:items-center gap-x-2">
                                                                <h2 className="text-lg font-morabba ">سن : </h2>
-                                                               <h2 className="text-lg font-morabba-bold"> {bioData.age}</h2>
+                                                               <h2 className="text-lg font-sultanAdanBold"> {bioData.age}</h2>
                                                         </div>
                                                         <div className="w-full flex flex-col md:flex-row md:items-center gap-x-2">
                                                                <h2 className="text-lg font-morabba ">فریلنسر : </h2>
@@ -113,7 +114,7 @@ export default function Bio() {
                                                         </div>
                                                         <div className="w-full flex flex-col md:flex-row md:items-center gap-x-2">
                                                                <h2 className="text-lg font-morabba ">ایمیل : </h2>
-                                                               <h2 className="text-lg font-morabba-bold">mbahri.cv@gmail.com</h2>
+                                                               <h2 className="text-lg font-gothic-bold">mbahri.cv@gmail.com</h2>
                                                         </div>
                                                  </div>
                                           </div>
@@ -137,8 +138,8 @@ export default function Bio() {
 
                                           {
                                                  skilsData.map(item => (
-                                                        <div key={item.id} className="w-38 flex flex-col items-center">
-                                                               <CircularProgressBar percentage={item.progress} />
+                                                        <div key={item.id} className="w-38 flex flex-col items-center ">
+                                                               <CircularProgressBar percentage={item.progress} className={"font-gothic"} />
                                                                <h3 className="pt-5 py-14 uppercase font-gothic-bold light:text-light-tertiary">{item.title}</h3>
                                                         </div>
                                                  ))
@@ -165,7 +166,7 @@ export default function Bio() {
                                                                       {/* left icon */}
                                                                       <div className="absolute top-0 -right-5 bg-primary size-10 rounded-full flex justify-center items-center"><BusinessCenterRoundedIcon className="text-neutral-700" /></div>
                                                                       {/* years */}
-                                                                      <div className="absolute top-0 right-8 bg-secondary px-4 py-1 w-fit rounded-full text-xs light:bg-light-secondary light:text-light-tertiary transition-all">{item.years}</div>
+                                                                      <div className="absolute top-0 right-8 bg-secondary px-4 py-1 w-fit rounded-full text-xs light:bg-light-secondary light:text-light-tertiary transition-all font-sultanAdanBold">{item.years}</div>
                                                                       {/* content */}
                                                                       <div className="px-8 pt-12  light:text-light-tertiary">
                                                                              <div className="w-full text-start space-y-4">
@@ -190,7 +191,7 @@ export default function Bio() {
                                           </div>
 
                                           {/* educations */}
-                                          <div className="w-full xl:w-1/2">
+                                          <div className="w-full xl:w-1/2 space-y-16">
 
                                                  {
                                                         educationData.map(item => (
@@ -202,7 +203,7 @@ export default function Bio() {
                                                                              </svg>
                                                                       </div>
                                                                       {/* years */}
-                                                                      <div className="absolute top-0 right-8 bg-secondary px-4 py-1 w-fit rounded-full text-xs font-morabba light:bg-light-secondary light:text-light-tertiary transition-all">{item.year}</div>
+                                                                      <div className="absolute top-0 right-8 bg-secondary px-4 py-1 w-fit rounded-full text-xs light:bg-light-secondary light:text-light-tertiary transition-all font-sultanAdanBold">{item.year}</div>
                                                                       {/* content */}
                                                                       <div className="px-8 pt-12  light:text-light-tertiary">
                                                                              <div className="w-full text-start space-y-4">

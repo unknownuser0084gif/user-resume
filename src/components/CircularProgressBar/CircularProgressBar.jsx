@@ -1,6 +1,6 @@
 import React from 'react';
 
-const CircularProgressBar = ({ percentage, size = 130, strokeWidth = 8 }) => {
+const CircularProgressBar = ({ percentage, size = 130, strokeWidth = 8, className = null }) => {
        const radius = (size - strokeWidth) / 2;
        const circumference = 2 * Math.PI * radius;
        const progress = circumference * (1 - percentage / 100);
@@ -32,10 +32,10 @@ const CircularProgressBar = ({ percentage, size = 130, strokeWidth = 8 }) => {
                             y="50%"
                             textAnchor="middle"
                             dominantBaseline="middle"
-                            fontSize="24"
+                            fontSize={24}
                             // fill="#ffffff"
                             fontWeight="bold"
-                            className='fill-white light:fill-light-tertiary'
+                            className={'fill-white light:fill-light-tertiary ' + className}
                      >
                             {percentage}%
                      </text>
