@@ -143,6 +143,18 @@ const portfolios = [
               "created_at": "2025-07-15 22:51:14",
               "updated_at": "2025-07-15 22:51:14"
        },  
+       {
+              "id": "7",
+              "image": "/images/portfolio/nazstore.png",
+              "project_title": "NazStore",
+              "name": "فروشگاه آنلاین خرید و فروش لوازم ورزشی",
+              "customer": "(طراحی قالب آماده)",
+              "preview_link": "http://nazstore.mbahri.ir/",
+              "language_programming": "ReactJS , ExpressJS",
+              "filter": "frontend",
+              "created_at": "2025-07-15 22:51:14",
+              "updated_at": "2025-07-15 22:51:14"
+       },  
 ]
 const settings = {
        email : "mbahri.cv@gmail.com",
