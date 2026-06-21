@@ -72,20 +72,6 @@ const experienceData = [
               company: "کاکتوس پارس شرق",
               description: "توسعه دهنده فرانت اند شرکت کاکتوس پارس شرق"
        },
-       {
-              id: 2,
-              years: "1402",
-              stack: "توسعه دهنده فول استک",
-              company: "فروشگاه اینترنتی خرید کتاب بوکینو",
-              description: "برگزیده استانی پنجمین دوره مسابقات علمی پژوهشی پژوهش سرا های کشور"
-       },
-       {
-              id: 3,
-              years: "1405",
-              stack: "توسعه دهنده فرانت اند",
-              company: "  فروشگاه اینترنتی نازاستور",
-              description: "  فروشگاه اینترنتی خرید و فروش لباس و لوازم ورزشی در سطح کشور"
-       },
 ]
 const educationData = [
        {
@@ -109,9 +95,9 @@ const portfolios = [
               "image": "/images/portfolio/jebril.png",
               "project_title": "Jebril",
               "name": "اژانس مسافرتی",
-              "customer": "Jebril",
+              "customer": "جبرئیلی",
               "preview_link": "https://jebril.company",
-              "language_programming": "html,css,js,php,mysql",
+              "language_programming": "html,css,js,php",
               "filter": "full",
               "created_at": "2025-07-15 22:13:49",
               "updated_at": "2025-07-15 22:13:49"
@@ -119,50 +105,64 @@ const portfolios = [
        {
               "id": "2",
               "image": "/images/portfolio/bookino.png",
-              "gallery" : [
+              "gallery": [
                      "/images/portfolio/mbahri-Tandis.jpg"
               ],
               "project_title": "Bookino",
               "name": "وبسایت خرید انلاین کتاب",
-              "customer": "مسابقات",
+              "customer": "برگزیده استانی در مسابقات",
               "preview_link": "-",
               "language_programming": "html,css,js,php,mysql",
               "filter": "full",
               "created_at": "2025-07-15 22:13:49",
               "updated_at": "2025-07-15 22:13:49"
-       },  
+       },
        {
               "id": "6",
               "image": "/images/portfolio/gpumonster.png",
               "project_title": "gpu monster",
               "name": "وبسایت ارایه خدمات رایانش ابری",
-              "customer": "GPUMonster",
+              "customer": "کاکتوس پارس شرق",
               "preview_link": "https://gpumonster.com",
               "language_programming": "html,css,js",
               "filter": "frontend",
               "created_at": "2025-07-15 22:51:14",
               "updated_at": "2025-07-15 22:51:14"
-       },  
+       },
        {
               "id": "7",
               "image": "/images/portfolio/nazstore.png",
               "project_title": "NazStore",
               "name": "فروشگاه آنلاین خرید و فروش لوازم ورزشی",
-              "customer": "(طراحی قالب آماده)",
+              "customer": "صیادی",
               "preview_link": "http://nazstore.mbahri.ir/",
-              "language_programming": "ReactJS , ExpressJS",
+              "is_developing" : true,
+              "language_programming": "ReactJS",
               "filter": "frontend",
               "created_at": "2025-07-15 22:51:14",
               "updated_at": "2025-07-15 22:51:14"
-       },  
+       },
+       {
+              "id": "11",
+              "image": "/images/portfolio/irangit.png",
+              "project_title": "IranGit",
+              "name": "میرور گیتهاب در زمان قطعی اینترنت بین الملل",
+              "customer": "مرتضایی",
+              "preview_link": "http://scorpion.ir/",
+              "is_developing" : true,
+              "language_programming": "ReactJS",
+              "filter": "frontend",
+              "created_at": "2025-07-15 22:51:14",
+              "updated_at": "2025-07-15 22:51:14"
+       },
 ]
 const settings = {
-       email : "mbahri.cv@gmail.com",
-       telegram : "mbhdev",
-       instagram : "mortezabhri",
-       github : "mortezabhri",
-       linkedin : "mortezabhri",
-       twitter : "mortezabhri",
+       email: "mbahri.cv@gmail.com",
+       telegram: "mbhdev",
+       instagram: "mortezabhri",
+       github: "mortezabhri",
+       linkedin: "mortezabhri",
+       twitter: "mortezabhri",
 }
 
 export {

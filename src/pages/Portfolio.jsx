@@ -118,7 +118,7 @@ export default function Portfolio() {
                                                                                     <div className="flex justify-between pb-8 pt-0 w-full font-morabba light:text-light-tertiary" dir="rtl">
                                                                                            <div className="w-full space-y-4 text-lg">
                                                                                                   <h3>مشتری : &nbsp;&nbsp;<span>{values.customer}</span></h3>
-                                                                                                  <h3>پیش نمایش :  &nbsp;&nbsp;{values.preview_link !== "-" ? (<a href={values.preview_link} target="_blank">{values.project_title}</a>) : "ندارد"}</h3>
+                                                                                                  <h3>پیش نمایش :  &nbsp;&nbsp;{values.preview_link !== "-" ? (values.is_developing ? "(درحال توسعه)" : (<a href={values.preview_link} target="_blank">{values.project_title}</a>)) : "ندارد"}</h3>
                                                                                            </div>
                                                                                            <div className="w-full space-y-4 text-lg">
                                                                                                   <h3>پروژه : &nbsp;&nbsp;<span>{values.name}</span></h3>
