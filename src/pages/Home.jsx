@@ -35,7 +35,7 @@ export default function Home() {
                                                  <h1 className='uppercase xl:text-[42px] text-3xl text-nowrap xl:leading-[40px] leading-[25px] text-primary font-morabba-bold tracking-wide word-spacing-half mb-6'>من مرتضی بحری هستم</h1>
                                                  <h1 className='uppercase xl:text-[42px] text-3xl text-nowrap xl:leading-[40px] leading-[25px] font-morabba-bold tracking-wide light:text-light-tertiary'>توسعه دهنده فرانت</h1>
                                                  <p className='text-start max-md:text-justify mt-12 xl:text-xl text-base font-morabba md:ml-4 leading-[30px] xl:leading-[35px] light:text-light-tertiary ' style={{ wordSpacing: "0.2rem" }}>
-                                                        من یک طراح وب و توسعه‌دهنده فرانت اند در ایران هستم که بر ایجاد تجربیات تمیز و کاربرپسند تمرکز دارم، من به ساخت نرم‌افزارهای عالی که زندگی اطرافیانم را بهبود می‌بخشد، علاقه زیادی دارم
+                                                        یک جونیور دولوپر که به جزئیات اهمیت میده. علاقه‌ ام به ساختن رابط‌های کاربری جذاب و روانه، چیزهایی که هم ظاهر خوبی داشته باشن و هم کار کردن باهاشون راحت باشه. همیشه در حال یادگیری و امتحان کردن ابزارها و روش‌های جدیدم تا بتونم خروجی بهتری ارائه بدم.
                                                  </p>
                                           </div>
                                    </div>
