@@ -14,6 +14,16 @@ const skilsData = [
               progress: 90
        },
        {
+              id: 13,
+              title: "Next JS",
+              progress: 30
+       },
+       {
+              id: 14,
+              title: "TYPESCRIPT",
+              progress: 25
+       },
+       {
               id: 3,
               title: "Vite",
               progress: 80
@@ -56,22 +66,30 @@ const skilsData = [
        {
               id: 11,
               title: "PHP",
-              progress: 60
+              progress: 75
        },
        {
               id: 12,
               title: "MySQL",
-              progress: 60
+              progress: 85
        },
 ]
 const experienceData = [
        {
               id: 1,
-              years: "1404-1403",
+              years: "1405-اکنون",
               stack: "توسعه دهنده فرانت اند",
-              company: "کاکتوس پارس شرق",
+              company: "سامانه رزرو آنلاین  تور و هتل یوجا",
               description: "توسعه دهنده فرانت اند شرکت کاکتوس پارس شرق"
        },
+       {
+              id: 2,
+              years: "1404-1403",
+              stack: "توسعه دهنده فرانت اند",
+              company: "شرکت خدمات هاستینگ کاکتوس پارس شرق",
+              description: "توسعه دهنده فرانت اند شرکت کاکتوس پارس شرق"
+       },
+
 ]
 const educationData = [
        {
@@ -91,16 +109,36 @@ const educationData = [
 ]
 const portfolios = [
        {
-              "id": "1",
-              "image": "/images/portfolio/jebril.png",
-              "project_title": "Jebril",
-              "name": "اژانس مسافرتی",
-              "customer": "جبرئیلی",
-              "preview_link": "https://jebril.company",
-              "language_programming": "html,css,js,php",
-              "filter": "full",
-              "created_at": "2025-07-15 22:13:49",
-              "updated_at": "2025-07-15 22:13:49"
+              "id": "7",
+              "image": "/images/portfolio/nazstore.png",
+              "project_title": "NazStore",
+              "name": "فروشگاه آنلاین خرید و فروش لوازم ورزشی",
+              "customer": "(پروژه شخصی/تیمی)",
+              "preview_link": "http://nazstore.mbahri.ir/",
+              "is_developing": true,
+              "language_programming": "ReactJS",
+              "filter": "frontend",
+              "created_at": "2025-07-15 22:51:14",
+              "updated_at": "2025-07-15 22:51:14"
+       },
+       {
+              "id": "8",
+              "image": "/images/portfolio/dc5.png",
+              "gallery": [
+                     "/images/portfolio/dc1.png",
+                     "/images/portfolio/dc2.png",
+                     "/images/portfolio/dc3.png",
+                     "/images/portfolio/dc4.png",
+              ],
+              "project_title": "Darschin",
+              "name": "وبسایت طراحی برنامه تحصیلی مناسب دانشجویان",
+              "customer": "(پروژه شخصی)",
+              "preview_link": "https://mortezabhri.github.io/darschin/",
+              "is_developing": false,
+              "language_programming": "ReactJS,PWA,Full_Client_Side",
+              "filter": "frontend",
+              "created_at": "2025-07-15 22:51:14",
+              "updated_at": "2025-07-15 22:51:14"
        },
        {
               "id": "2",
@@ -118,6 +156,19 @@ const portfolios = [
               "updated_at": "2025-07-15 22:13:49"
        },
        {
+              "id": "11",
+              "image": "/images/portfolio/irangit.png",
+              "project_title": "IranGit",
+              "name": "میرور گیتهاب در زمان قطعی اینترنت بین الملل",
+              "customer": "مرتضایی",
+              "preview_link": "http://scorpion.ir/",
+              "is_developing": true,
+              "language_programming": "ReactJS",
+              "filter": "frontend",
+              "created_at": "2025-07-15 22:51:14",
+              "updated_at": "2025-07-15 22:51:14"
+       },
+       {
               "id": "6",
               "image": "/images/portfolio/gpumonster.png",
               "project_title": "gpu monster",
@@ -130,30 +181,16 @@ const portfolios = [
               "updated_at": "2025-07-15 22:51:14"
        },
        {
-              "id": "7",
-              "image": "/images/portfolio/nazstore.png",
-              "project_title": "NazStore",
-              "name": "فروشگاه آنلاین خرید و فروش لوازم ورزشی",
-              "customer": "صیادی",
-              "preview_link": "http://nazstore.mbahri.ir/",
-              "is_developing" : true,
-              "language_programming": "ReactJS",
-              "filter": "frontend",
-              "created_at": "2025-07-15 22:51:14",
-              "updated_at": "2025-07-15 22:51:14"
-       },
-       {
-              "id": "11",
-              "image": "/images/portfolio/irangit.png",
-              "project_title": "IranGit",
-              "name": "میرور گیتهاب در زمان قطعی اینترنت بین الملل",
-              "customer": "مرتضایی",
-              "preview_link": "http://scorpion.ir/",
-              "is_developing" : true,
-              "language_programming": "ReactJS",
-              "filter": "frontend",
-              "created_at": "2025-07-15 22:51:14",
-              "updated_at": "2025-07-15 22:51:14"
+              "id": "1",
+              "image": "/images/portfolio/jebril.png",
+              "project_title": "Jebril",
+              "name": "اژانس مسافرتی",
+              "customer": "جبرئیلی",
+              "preview_link": "https://jebril.company",
+              "language_programming": "html,css,js,php",
+              "filter": "full",
+              "created_at": "2025-07-15 22:13:49",
+              "updated_at": "2025-07-15 22:13:49"
        },
 ]
 const settings = {

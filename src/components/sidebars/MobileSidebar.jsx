@@ -29,26 +29,26 @@ export default function MobileSidebar({ approveOnTop }) {
        };
 
        return (
-              <section className='fixed bottom-0 w-full py-3 bg-tertiary light:bg-light-tertiary z-10'>
-                     <div className='w-full flex justify-evenly items-center'>
+              <section className='fixed bottom-0 flex justify-center pb-5 w-full z-10'>
+                     <div className='w-[94%] rounded-4xl flex justify-evenly items-center bg-tertiary light:bg-neutral-200 py-5'>
                             {/* home */}
-                            <NavLink to="/" onClick={handleClick} className={e => `${e.isActive && 'active-sidebar-desktop'} size-11 rounded-full bg-secondary light:bg-light-secondary flex justify-center items-center group duration-400 transition-all overflow-hidden hover:bg-primary/90 `} dir='rtl' >
+                            <NavLink to="/" onClick={handleClick} className={e => `${e.isActive && 'active-sidebar-desktop'} size-10 rounded-full bg-secondary light:bg-light-secondary flex justify-center items-center group duration-400 transition-all overflow-hidden hover:bg-primary/90 `} dir='rtl' >
                                    <HomeRoundedIcon className={`text-gray-200 group-hover:text-gray-700 active-sidebar-desktop-child light:text-light-tertiary`} fontSize='medium' />
                             </NavLink>
                             {/* bio */}
-                            <NavLink to="/about" onClick={handleClick} className={e => `${e.isActive && 'active-sidebar-desktop'} size-11 rounded-full bg-secondary light:bg-light-secondary flex justify-center items-center group duration-400 transition-all overflow-hidden hover:bg-primary/90 `} dir='rtl' >
+                            <NavLink to="/about" onClick={handleClick} className={e => `${e.isActive && 'active-sidebar-desktop'} size-10 rounded-full bg-secondary light:bg-light-secondary flex justify-center items-center group duration-400 transition-all overflow-hidden hover:bg-primary/90 `} dir='rtl' >
                                    <Person2RoundedIcon className={`text-gray-200 group-hover:text-gray-700 active-sidebar-desktop-child light:text-light-tertiary`} fontSize='medium' />
                             </NavLink>
                             {/* portfolio */}
-                            <NavLink to="/portfolio" onClick={handleClick} className={e => `${e.isActive && 'active-sidebar-desktop'} size-11 rounded-full bg-secondary light:bg-light-secondary flex justify-center items-center group duration-400 transition-all overflow-hidden hover:bg-primary/90 `} dir='rtl' >
+                            <NavLink to="/portfolio" onClick={handleClick} className={e => `${e.isActive && 'active-sidebar-desktop'} size-10 rounded-full bg-secondary light:bg-light-secondary flex justify-center items-center group duration-400 transition-all overflow-hidden hover:bg-primary/90 `} dir='rtl' >
                                    <BusinessCenterRoundedIcon className={`text-gray-200 group-hover:text-gray-700 active-sidebar-desktop-child light:text-light-tertiary`} fontSize='smail' />
                             </NavLink>
                             {/* contact */}
-                            <NavLink to="/contact" onClick={handleClick} className={e => `${e.isActive && 'active-sidebar-desktop'} size-11 rounded-full bg-secondary light:bg-light-secondary flex justify-center items-center group duration-400 transition-all overflow-hidden hover:bg-primary/90 `} dir='rtl' >
+                            <NavLink to="/contact" onClick={handleClick} className={e => `${e.isActive && 'active-sidebar-desktop'} size-10 rounded-full bg-secondary light:bg-light-secondary flex justify-center items-center group duration-400 transition-all overflow-hidden hover:bg-primary/90 `} dir='rtl' >
                                    <ConnectWithoutContactRoundedIcon className={`text-gray-200 group-hover:text-gray-700 active-sidebar-desktop-child light:text-light-tertiary`} fontSize='medium' />
                             </NavLink>
                             {/* settings */}
-                            <div onClick={() => setOpenSettings(prev => !prev)} className=" size-11 rounded-full bg-secondary light:bg-light-secondary flex justify-center items-center group duration-400 transition-all overflow-hidden hover:bg-primary/90" dir='rtl' >
+                            <div onClick={() => setOpenSettings(prev => !prev)} className=" size-10 rounded-full bg-secondary light:bg-light-secondary flex justify-center items-center group duration-400 transition-all overflow-hidden hover:bg-primary/90" dir='rtl' >
                                    <SettingsIcon className={`${openSettings ? "text-gray-700" : "text-gray-200"}  group-hover:text-gray-700 light:text-light-tertiary active-sidebar-desktop-child`} />
                                    {/* Change Them Website */}
                                    <div onClick={() => setTheme(prev => !prev)} className={`absolute ${openSettings && "-translate-y-18 opacity-100 !pointer-events-auto"} light:bg-light-secondary pointer-events-none delay-100 duration-500 opacity-0 size-13 rounded-full bg-secondary transition-all flex justify-center items-center text-white`}>

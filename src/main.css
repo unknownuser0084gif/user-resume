@@ -176,6 +176,10 @@ textarea:focus {
        background: #707070;
 }
 
+.scrollbar-hidden::-webkit-scrollbar {
+       display: none;
+}
+
 .nextSlideButton::after {
        content: "next";
        font-family: swiper-icons
@@ -192,4 +196,18 @@ textarea:focus {
 
 .addPointerEventsAuto>div {
        pointer-events: visible;
+}
+ .swiper-pagination-bullet {
+       width: 4px;
+       height: 4px;
+       border-radius: 2px;
+       background: rgba(255, 255, 255, 0.5);
+       opacity: 1;
+       margin: 0 !important;
+       transition: width 0.25s ease, background-color 0.25s ease;
+}
+
+ .swiper-pagination-bullet-active {
+       width: 16px;
+       background: theme('colors.primary', #ef4444);
 }

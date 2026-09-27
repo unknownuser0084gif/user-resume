@@ -52,7 +52,7 @@ export default function Bio() {
                                           </div>
                                           {/* years of experience */}
                                           <div className="border border-neutral-800 light:border-light-secondary rounded-lg py-6 text-start px-4 md:px-8 space-y-4 w-full">
-                                                 <h1 className="text-6xl text-primary font-sultanAdanBold">1.5</h1>
+                                                 <h1 className="text-6xl text-primary font-sultanAdanBold">2</h1>
                                                  <div className="font-morabba flex gap-x-3 text-xl">
                                                         <h1 className="text-gray-600">____</h1>
                                                         <h3>سال <br /> تجربه</h3>

@@ -1,5 +1,5 @@
 import { useState, memo } from 'react';
-import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
+import HighlightOffRoundedIcon from '@mui/icons-material/HighlightOffRounded';
 import { motion, AnimatePresence } from 'framer-motion';
 
 
@@ -40,63 +40,48 @@ const TransitionsModal = memo(({ children }) => {
                                                                {
                                                                       opacity: 0,
                                                                       backdropFilter: "blur(0)",
-                                                                      // transition: {
-                                                                      //        delay: 0.15
-                                                                      // }
+                                                                      transition: {
+                                                                             delay: 0.15
+                                                                      }
                                                                }
                                                         }
                                                  />
-                                                 <motion.section className="fixed top-1/2 left-1/2 -translate-1/2 w-[95%] md:w-6/8 lg:w-5/8 xl:w-3/8 2xl:w-3/8 max-h-[90vh] scrollable overflow-y-auto rounded-2xl bg-tertiary light:bg-light-primary shadow-2xl z-98"
+                                                 <motion.section className="fixed top-1/2 left-1/2 -translate-1/2 w-[95%] md:w-7/8 lg:w-6/8 xl:w-5/8 2xl:w-4/8 border py-4 rounded-lg px-4 bg-tertiary light:bg-light-primary border-black z-98"
                                                         initial={
                                                                {
                                                                       opacity: 0,
-                                                                      // transform: "matrix3d(1, 0, 0, 0.0002, 0, 1, 0, -0.0001, 0, 0, 1, 0, -0 , 0, 0, 1)",
-                                                                      // perspective: "1500px",
-                                                                      // willChange: "opacity , transform",
-                                                                      // filter: "blur(12px)"
-                                                                      rotate: "1deg",
-                                                                      top: "55%"
+                                                                      transform: "matrix3d(1, 0, 0, 0.0002, 0, 1, 0, -0.0001, 0, 0, 1, 0, -0 , 0, 0, 1)",
+                                                                      perspective: "1500px",
+                                                                      willChange: "opacity , transform",
+                                                                      filter: "blur(12px)"
                                                                }
                                                         }
                                                         exit={
                                                                {
                                                                       opacity: [1, 0, 0],
-                                                                      // transform: "matrix3d(1, 0, 0, 0.0002, 0, 1, 0, -0.0001, 0, 0, 1, 0, -0 , 0, 0, 1)",
-                                                                      // perspective: "1500px",
-                                                                      // willChange: "opacity , transform",
-                                                                      // filter: "blur(12px)",
-                                                                      rotate: "1deg",
+                                                                      transform: "matrix3d(1, 0, 0, 0.0002, 0, 1, 0, -0.0001, 0, 0, 1, 0, -0 , 0, 0, 1)",
+                                                                      perspective: "1500px",
+                                                                      willChange: "opacity , transform",
+                                                                      filter: "blur(12px)",
                                                                       transition: {
-                                                                             duration: 0.45
-                                                                      },
-                                                                      top: "55%"
+                                                                             duration: 0.7
+                                                                      }
                                                                }
                                                         }
                                                         animate={
                                                                {
                                                                       opacity: [0, 0, 1],
-                                                                      // transform: "matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)",
-                                                                      // filter: "blur(0px)",
+                                                                      transform: "matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)",
+                                                                      filter: "blur(0px)",
                                                                       transition: {
-                                                                             duration: 0.3,
-                                                                             // delay: 0.05
-                                                                      },
-                                                                      rotate: "0deg",
-                                                                      top: "50%"
+                                                                             duration: 0.25,
+                                                                             delay: 0.05
+                                                                      }
                                                                }
                                                         }
                                                  >
-                                                        <button
-                                                               type="button"
-                                                               aria-label="بستن"
-                                                               onClick={() => setOpen(prev => !prev)}
-                                                               className="absolute z-10 top-6 right-6 size-8 flex justify-center items-center rounded-lg text-neutral-300 light:text-light-tertiary bg-white/10 transition-colors duration-200"
-                                                        >
-                                                               <CloseRoundedIcon fontSize="small" />
-                                                        </button>
-                                                        <div className="">
-                                                               {children[1]}
-                                                        </div>
+                                                        <HighlightOffRoundedIcon className='absolute right-2 top-2 light:text-light-tertiary' onClick={() => setOpen(prev => !prev)}/>
+                                                        {children[1]}
                                                  </motion.section>
                                           </>
                                    )
